@@ -1,0 +1,36 @@
+
+#search {
+    border: 1px solid gray;
+    width: 400px;
+}
+/*----------------------------------------------------------------*/
+.side-menu {
+    height: 500px;
+    width: 15%;
+    float: left;
+    background-color: #ddd;
+}
+
+.side-menu ul{
+    margin-left: 10px;
+}
+
+.side-menu ul li{
+    list-style-type: none;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.side-menu ul li:hover{
+    color: orange
+}
+/*-----------------------------------------------------*/
+
+.slider{
+    
+    width: 85%;
+    margin-left: 15%;
+    padding: 0 10px;
+}
+
