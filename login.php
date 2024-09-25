@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('connection.php');
+include_once('component\database.php');
 
 if (isset($_POST['login'])) {
 
