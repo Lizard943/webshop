@@ -1,3 +1,40 @@
+<?php require_once 'component\database.php'?>
+<?php
+    require_once 'component\database.php';
+    session_start();
+    
+    // Kiểm tra xem giỏ hàng đã tồn tại chưa
+    
+    
+    // Thêm sản phẩm vào giỏ hàng
+    if (isset($_POST['mua']) && isset($_SESSION['name'])) {
+        if (isset($_SESSION['cart'])) {
+            $session_arr_id = array_column($_SESSION['cart'], 'id');
+            if (!in_array($_GET['id'], $session_arr_id)) {
+                $_sestion_array = array(
+                    'id' => $_GET['id'],
+                    'name' => $_POST['name'],
+                    'gia' => $_POST['gia']
+                    
+                );
+                $_SESSION['cart'][] = $_sestion_array;
+            }
+        }
+        else {
+            
+            $_sestion_array = array(
+                'id' => $_GET['id'],
+                'name' => $_POST['name'],
+                'gia' => $_POST['gia']
+            );
+            $_SESSION['cart'][] = $_sestion_array;
+        }
+    }
+
+
+    // Hiển thị giỏ hàng
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +46,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary fixed-top" >
     <div class="container-fluid">
         <img src="img/images.png" height="40" class="me-5">
         <form class="d-flex" role="search">
@@ -26,21 +63,32 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+                <a class="nav-link" href="#">Cart</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <?php 
+                    if (isset($_SESSION['name'])){ ?>
+                        <a class="nav-link" href="#"><?=$_SESSION['name']?></a>
+                    <?php }
+                ?>
+                
+            </li>
+            
+            </li>
+            <li class="nav-item">
+                <?php 
+                    if (!isset($_SESSION['name'])){ ?>
+                        <a class="nav-link" href="loginindex.php">Login</a>
+                    <?php } 
+                        else { ?>
+                            <a class="nav-link" href="logout.php">Log out</a>
+                        <?php }
+                    ?>
+                 
+                    
+                
+                
+                
             </li>
         </ul>
         
@@ -48,7 +96,7 @@
     </div>
     </nav>
 
-    <section class="header" >
+    <section class="header" style="margin-top:60px" >
         <div class="side-menu">
             <ul>
                 <li>onslae</li>
@@ -86,5 +134,82 @@
             </button>
         </div>
     </div>
+
+    <!--section class="feature-categories">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="">
+                </div>
+                <div class="col-md-4">
+                    <img src="">
+                </div>
+                <div class="col-md-4">
+                    <img src="">
+                </div>
+            </div>
+        </div>
+    </section-->
+
+    <section class="on-sale">
+        <div class="container" style="background-color: lightblue;padding-bottom:10px">
+            <div class="title-box">
+                <h2>On Sale</h2>
+            </div>
+            <div class="row">
+            <?php
+                $sql = "SELECT * FROM sale";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                // Hiển thị dữ liệu
+                    while($row = $result->fetch_assoc()) { ?>
+                        
+                            <div class="col-md-2 g-6">
+                                <form class="card" style="width: 12rem;" method="post" action="index.php?id=<?= $row['id'] ?>">
+                                    <img src="<?= $row["img"] ?>" class="card-img-top" style="width: 10rem;display:flex;margin: 10px auto;">
+                                    <div class="card-body" style="height:14rem">
+                                        <p class="card-text " ><?= $row['name'] ?></p>
+                                        <input type="hidden" name="name" value="<?= $row['name'] ?>">
+                                        <div class="row gx-6" style="position:absolute;bottom:10px;">
+                                            <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format($row["gia"]) ?>đ</p>
+                                            <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
+                                            <input type="submit" name="mua" class="btn btn-primary col" style="width:80px"  value="Mua"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        
+                <?php   }
+                 } 
+                else {
+                    echo "0 results";
+                } ?>
+            
+            </div>
+        </div>
+    </section>
+    <div>
+        <?php
+            if (isset($_SESSION['name']) && isset($_SESSION['cart'])){
+                var_dump($_SESSION['cart']);
+            }
+        ?>
+    </div>
+    
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Thực phẩm chức năng</h3>
+                    <p>Vũ Thành Luân</p>
+                    <p>Nguyễn Hữu Hoàng</p>
+                    <p>Bùi Đức Mạnh</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </body>
 </html>
