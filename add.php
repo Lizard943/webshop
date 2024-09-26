@@ -10,7 +10,7 @@ if(isset($_POST['register']))
     $sql   ="INSERT INTO `tbl_user`(`name`, `username`, `password`) VALUES ('$name','$username','$pass')";
     $result=mysqli_query($conn,$sql);
     if($result){ 
-    header('location:index.php');
+    header('location:loginindex.php');
     echo"<script>alert('New User Register Success');</script>";   
     }else{
         die(mysqli_error($conn)) ;
