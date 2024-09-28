@@ -182,13 +182,6 @@
             </div>
         </div>
     </section>
-    <div>
-        <?php
-            if (isset($_SESSION['name']) && isset($_SESSION['cart'])){
-                var_dump($_SESSION['cart']);
-            }
-        ?>
-    </div>
     
     <section class="footer">
         <div class="container">
