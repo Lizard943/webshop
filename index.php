@@ -37,7 +37,7 @@
     }
     if (isset($_GET['action'])){
         if ($_GET['action'] == 'ct'){
-            header('location:cart.php');
+            header('location:details.php');
         }
     }
     
