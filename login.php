@@ -13,6 +13,7 @@ if (isset($_POST['login'])) {
     if (empty($_POST['username']) && empty($_POST['password'])) {
         echo "<script>alert('Please Fill Username and Password');</script>";
         exit;
+        
     } elseif (empty($_POST['password'])) {
         echo "<script>alert('Please Fill Password');</script>";
         exit;

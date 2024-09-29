@@ -1,6 +1,17 @@
 <?php
     require_once 'component\database.php';
     session_start();
+    
+    if(isset($_POST['xoa'])) {
+        if ($_POST['xoa'] == 'xoa'){
+            foreach ($_SESSION['cart'] as $key => $item){
+                if ($item['id']==$_GET['id']){
+                    unset($_SESSION['cart'][$key]);
+                }
+            }
+        }
+    }
+
 ?>
 
 
@@ -61,17 +72,18 @@
     </nav>
 
     <section class="cartt">
-        <div class="container-fluid " style="margin-top:70px">
+        <div class="container-fluid" style="margin-top:70px">
             <div class="row mx-5">
-                <div class="col-md-9">
+                <div class="col-9">
                     <div class="shopping-cart">
                         <h6>My cart</h6>
                         <hr>
                         <?php
+                            $sum = 0;
                             if (isset($_SESSION['cart']) && isset($_SESSION['name'])) {
                                 foreach ($_SESSION['cart'] as $item){
                                     ?>
-                                        <form>
+                                        <form method="post" action="cart.php?id=<?=$item['id']?>">
                                             <div class="border rounded my-3">
                                                 <div class="row align-items-center ">
                                                     <div class="col col-md-2">
@@ -84,27 +96,60 @@
                                                         <h6 class><?=number_format($item['gia'])?></h6>
                                                     </div>
                                                     <div class="col col-md-1">
-                                                        <input type="number" style="width: 50px;" value="1">
+                                                        <input type="number" style="width: 50px;" value="<?=$item['sl']?>">
                                                     </div> 
                                                     <div class="col col-md-2 pt-2">
-                                                        <h6>200000</h6>
+                                                        <h6></h6>
                                                     </div>
                                                     <div class="col col-md-1">
-                                                        <input type="submit" value="Xoá"></input>
+                                                        <input type="submit" name="xoa" value="xoa" class=""> 
                                                     </div> 
                                                 </div>
                                             </div>
                                         </form>
-                                 <?php }
+                                 <?php 
+                                 $sum += $item['sl']*$item['gia'];}
                                 }
                             ?>
-     
+                    </div>
+                </div class="col-3">
+                    <div class="mt-4" style="width:320px">
+                        <form>
+                            <div class="border rounded p-3">
+                                <h6>Thanh toán</h6>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <p>Tổng giá sản phẩm:</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p><?=number_format($sum)?>đ</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>COD:</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p><?php if($sum!=0){ echo "22,000đ";}?></p>
+                                    </div>
+                                    <hr style="margin-left:12px;width:250px">
+                                    <div class="col-8">
+                                        <p>Tổng thanh toán:</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p><strong><?=number_format($sum)?>đ</strong></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
+    <?php
+        
+    ?>
 
 </body>
 </html>

@@ -1,7 +1,6 @@
 <?php
     require_once 'component\database.php';
     session_start();
-    
     if (isset($_POST['mua']) && isset($_SESSION['name'])) {
         if (isset($_SESSION['cart'])) {
             $session_arr_id = array_column($_SESSION['cart'], 'id');
@@ -10,10 +9,18 @@
                     'id' => $_GET['id'],
                     'name' => $_POST['name'],
                     'gia' => $_POST['gia'],
-                    'img' => $_POST['img']
+                    'img' => $_POST['img'],
+                    'sl' => 1
                     
                 );
                 $_SESSION['cart'][] = $_sestion_array;
+            }
+            else {
+                foreach ($_SESSION['cart'] as $key => $item){
+                    if ($item['id'] == $_GET['id']){
+                        $_SESSION['cart'][$key]['sl'] +=1;
+                    }
+                }
             }
         }
         else {
@@ -21,11 +28,19 @@
                 'id' => $_GET['id'],
                 'name' => $_POST['name'],
                 'gia' => $_POST['gia'],
-                'img' => $_POST['img']
+                'img' => $_POST['img'],
+                'sl' => 1
+                
             );
             $_SESSION['cart'][] = $_sestion_array;
+        } 
+    }
+    if (isset($_GET['action'])){
+        if ($_GET['action'] == 'ct'){
+            header('location:cart.php');
         }
     }
+    
     
 
 
@@ -55,35 +70,32 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="cart.php">Cart</a>
-            </li>
-            <li class="nav-item">
-                <?php 
-                    if (isset($_SESSION['name'])){ ?>
-                        <a class="nav-link" href="#"><?=$_SESSION['name']?></a>
-                    <?php }
-                ?>
-                
-            </li>
-            
-            </li>
-            <li class="nav-item">
-                <?php 
-                    if (!isset($_SESSION['name'])){ ?>
-                        <a class="nav-link" href="loginindex.php">Login</a>
-                    <?php } 
-                        else { ?>
-                            <a class="nav-link" href="logout.php">Log out</a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.php">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <?php 
+                        if (isset($_SESSION['name'])){ ?>
+                            <a class="nav-link" href="#"><?=$_SESSION['name']?></a>
                         <?php }
                     ?>
-            </li>
-        </ul>
-        
+                </li>
+                
+                <li class="nav-item">
+                    <?php 
+                        if (!isset($_SESSION['name'])){ ?>
+                            <a class="nav-link" href="loginindex.php">Login</a>
+                        <?php } 
+                            else { ?>
+                                <a class="nav-link" href="logout.php">Log out</a>
+                            <?php }
+                        ?>
+                </li>
+            </ul>
         </div>
     </div>
     </nav>
@@ -159,7 +171,9 @@
                         
                             <div class="col my-2">
                                 <form class="card" style="width: 12rem;" method="post" action="index.php?id=<?= $row['id'] ?>">
-                                    <img src="<?= $row["img"] ?>" class="card-img-top" style="width: 10rem;display:flex;margin: 10px auto;">
+                                    <a href="index.php?action=ct&id=<?= $row['id'] ?>">
+                                        <img src="<?= $row["img"] ?>" class="card-img-top" style="width: 10rem;display:flex;margin: 10px auto;">
+                                    </a>
                                     <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                     <div class="card-body" style="height:14rem">
                                         <p class="card-text " ><?= $row['name'] ?></p>
@@ -182,6 +196,7 @@
             </div>
         </div>
     </section>
+    
     
     <section class="footer">
         <div class="container">
