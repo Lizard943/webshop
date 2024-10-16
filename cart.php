@@ -27,7 +27,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary fixed-top" >
-    <div class="container-fluid">
+    <div class="container">
         <img src="img/images.png" height="40" class="me-5">
         <form class="d-flex" role="search">
             <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

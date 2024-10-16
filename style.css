@@ -1,18 +1,45 @@
-
+body {
+    background-color: #e1eaf7;
+}
+/*----------------------------------------------------------------*/
+nav {
+    background-image: url(img/background1.jpg);
+}
+.navbar .container #navbarSupportedContent li a {
+    color: white;
+}
 #search {
     border: 1px solid gray;
     width: 400px;
 }
 /*----------------------------------------------------------------*/
+.danhmuc {
+    height: 40px;
+    background-color: white;
+    border-bottom: 1px solid #000;
+    box-shadow: 0 0 5px;
+}
+
+
+
+
+/*----------------------------------------------------------------*/
 .side-menu {
     height: 500px;
-    width: 15%;
+    width: 20%;
     float: left;
     background-color: #ddd;
 }
 
-.side-menu ul{
-    margin-left: 10px;
+.side-menu .card{
+    margin: 10px;
+    height: 70px;
+}
+
+.side-menu .card .row img {
+    width: 50px;
+    display: block;
+    margin: 10px auto;
 }
 
 .side-menu ul li{
@@ -23,15 +50,15 @@
 }
 
 .side-menu ul li:hover{
-    color: orange
+    color: orange;
 }
 /*-----------------------------------------------------*/
 
-.slider{
-    
-    width: 85%;
-    margin-left: 15%;
-    padding: 0 10px;
+.slider { 
+    width: 80%;
+    margin-left: 21%;
+    border-radius: 50px;
+    border: 1px solid gray;
 }
 
 
@@ -41,7 +68,6 @@
     
 }
 .title-box {
-    
     background: aqua;
     color: #fff;
     width: 180px;
@@ -57,6 +83,22 @@
 
 /*---------------------------------------------*/
 
+.feature-categories img{
+    width: 400px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px;
+}
+/*---------------------------------------------*/
+.gopy {
+    margin-top: 70px;
+    background-color: lightblue;
+    padding: 20px 0;
+}
+.gopy .container {
+    width: 50%;
+}
+
+/*---------------------------------------------*/
 .footer{
     padding-top: 50px;
     margin-top: 50px;
@@ -64,3 +106,30 @@
     color: #fff;
 }
 
+/*----------------------------------------*/
+.thongke .container {
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+}
+.thongke .tk {
+    padding: 12px 50px
+}
+#ds .boloc{
+    height: inherit;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 15px 20px;
+}
+#ds .danhsach{
+    height: auto;
+    padding: 15px 30px;
+}
+#ds ul {
+    list-style: none;
+}
+
+#ds ul li {    
+    margin: 10px 0;
+}
