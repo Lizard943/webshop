@@ -102,9 +102,51 @@
             </div>
         </div>
     </section>
+    <div class="recommended mt-5" id="recommended" style="background-color: lightgreen;padding-bottom:10px">
+        <div class="container" >
+            <div class="title-box">
+                <h2>Đề xuất hôm nay</h2>
+            </div>
+            <div class="row justify-content-start">
+            <?php
+                $sql = "SELECT * FROM san_pham ORDER BY RAND() LIMIT 6";
+                $result = $conn->query($sql);
 
-    <section class="on-sale" id="on-sale">
-        <div class="container" style="background-color: lightblue;padding-bottom:10px">
+                if ($result->num_rows > 0) {
+                // Hiển thị dữ liệu
+                    while($row = $result->fetch_assoc()) { ?>
+                        
+                            <div class="col-2 my-2">
+                                <form class="card" style="width: 12rem;" method="post" action="index.php?id=<?= $row['id'] ?>">
+                                    <a href="index.php?action=ct&id=<?= $row['id'] ?>" name="detail">
+                                        <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
+                                    </a>
+                                    <input type="hidden" name="img" value="<?= $row['img'] ?>">
+                                    <div class="card-body" style="height:14rem">
+                                        <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
+                                        <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
+                                        <div class="row" style="position:absolute;bottom:10px;">
+                                            <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format($row["gia"]) ?>đ</p>
+                                            <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
+                                            <input type="submit" name="mua" class="btn btn-primary col" style="width:80px"  value="Mua"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        
+                <?php   }
+                 } 
+                else {
+                    echo "0 results";
+                } ?>
+            
+            </div>
+            <img src="img/sub_banner_d327142f93.png" style="margin-top:20px;width:inherit">
+        </div>
+    </div>
+
+    <div class="on-sale" id="on-sale" style="background-color: pink;padding-bottom:10px">
+        <div class="container">
             <div class="title-box">
                 <h2>On Sale</h2>
             </div>
@@ -142,9 +184,56 @@
                 } ?>
             
             </div>
+
+            <img src="img/sub_banner_d327142f93.png" style="margin-top:20px;width:inherit">
         </div>
-    </section>
-    <div class="gopy" id="gop-y">
+    </div>
+
+    <div class="best-seller" id="best-seller" style="background-color: lightyellow;padding-bottom:10px">
+        <div class="container" >
+            <div class="title-box">
+                <h2>Bán chạy</h2>
+            </div>
+            <div class="row justify-content-start">
+            <?php
+                $sql = "SELECT * FROM san_pham ORDER BY RAND() LIMIT 6";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                // Hiển thị dữ liệu
+                    while($row = $result->fetch_assoc()) { ?>
+                        
+                            <div class="col-2 my-2">
+                                <form class="card" style="width: 12rem;" method="post" action="index.php?id=<?= $row['id'] ?>">
+                                    <a href="index.php?action=ct&id=<?= $row['id'] ?>" name="detail">
+                                        <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
+                                    </a>
+                                    <input type="hidden" name="img" value="<?= $row['img'] ?>">
+                                    <div class="card-body" style="height:14rem">
+                                        <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
+                                        <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
+                                        <div class="row" style="position:absolute;bottom:10px;">
+                                            <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format($row["gia"]) ?>đ</p>
+                                            <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
+                                            <input type="submit" name="mua" class="btn btn-primary col" style="width:80px"  value="Mua"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        
+                <?php   }
+                 } 
+                else {
+                    echo "0 results";
+                } ?>
+            
+            </div>
+            <img src="img/sub_banner_d327142f93.png" style="margin-top:20px;width:inherit">
+        </div>
+    </div>
+
+    
+    <div class="feedback" id="feedback">
         <div class="container">
             <div class="mb-3">
                 <label for="" class="form-label">Tên</label>

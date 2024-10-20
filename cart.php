@@ -28,7 +28,7 @@
 <body>
 <nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary fixed-top" >
     <div class="container">
-        <img src="img/images.png" height="40" class="me-5">
+        <a href="index.php"><img src="img/images.png" height="40" class="me-5"></a>
         <form class="d-flex" role="search">
             <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>

@@ -11,17 +11,17 @@
 <body>
     <section class="header" style="margin-top:10px" >
         <div class="side-menu">
-            <a href="#on-sale">
+            <a href="#recommended">
                 <div class="card site-item">
                     <div class="row">
                         <div class="col-1">  
                         </div>
                         <div class="col-3">
-                            <img src="img/coupon.png"> 
+                            <img src="img/recommended.png"> 
                         </div>
                         <div class="col-7">
                             <div class="card-body">
-                                <h5 class="card-text mt-1">Giảm giá</h5>
+                                <h5 class="card-text mt-1">Đề xuất</h5>
                             </div>
                         </div>
                     </div>
@@ -42,33 +42,35 @@
                         </div>
                     </div>
                 </div>
-            </a><a href="#on-sale">
+            </a>
+            <a href="#best-seller">
                 <div class="card site-item">
                     <div class="row">
                         <div class="col-1">  
                         </div>
                         <div class="col-3">
-                            <img src="img/coupon.png"> 
+                            <img src="img/best-seller.png"> 
                         </div>
                         <div class="col-7">
                             <div class="card-body">
-                                <h5 class="card-text mt-1">Giảm giá</h5>
+                                <h5 class="card-text mt-1">Bán chạy</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="#on-sale">
+            
+            <a href="#feedback">
                 <div class="card site-item">
                     <div class="row">
                         <div class="col-1">  
                         </div>
                         <div class="col-3">
-                            <img src="img/coupon.png"> 
+                            <img src="img/chaticon.png"> 
                         </div>
                         <div class="col-7">
                             <div class="card-body">
-                                <h5 class="card-text mt-1">Giảm giá</h5>
+                                <h5 class="card-text mt-1">Góp ý</h5>
                             </div>
                         </div>
                     </div>
