@@ -1,4 +1,5 @@
 <?php
+    require_once 'component\database.php';
     require_once 'filter.php';
     require_once 'buy.php';
     $_SESSION['sql'] = 'SELECT * FROM san_pham';
@@ -8,7 +9,9 @@
             header("Location:details.php");                     
         }
     }
-    
+    if (isset($_GET['search'])){
+        $_SESSION['sql'] = 'SELECT * FROM san_pham WHERE ten_san_pham LIKE \'%'.$_GET['search'].'%\' ';
+    }
     if (isset($_GET['muc'])){
         $_SESSION['sql'] = chondanhmuc($_GET['muclon'],$_GET['muc']);
     }

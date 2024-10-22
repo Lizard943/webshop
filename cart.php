@@ -1,5 +1,6 @@
 <?php
     require_once 'component\database.php';
+    include 'buy.php';
     session_start();
     
     if(isset($_POST['xoa'])) {
@@ -136,8 +137,8 @@
                                     </div>
                                     <div class="col-4">
                                         <p><strong><?=number_format($sum)?>đ</strong></p>
-                                        
                                     </div>
+                                    <button class="btn btn-primary">Thanh toán</button>
                                 </div>
                             </div>
                         </form>

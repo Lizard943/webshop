@@ -1,7 +1,7 @@
 <?php
-    require_once 'component\database.php';
+    
     session_start();
-    if (isset($_POST['mua']) && isset($_SESSION['name'])) {
+    if (isset($_GET['mua']) && isset($_SESSION['name'])) {
         if (isset($_SESSION['cart'])) {
             $session_arr_id = array_column($_SESSION['cart'], 'id');
             if (!in_array($_GET['id'], $session_arr_id)) {

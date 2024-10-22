@@ -1,6 +1,6 @@
 <?php
     require_once 'component\database.php';
-    session_start();
+    require 'buy.php';
     if (isset($_SESSION['detail'])){
         
     }
@@ -16,50 +16,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body style="background-color:white">
-<nav class="navbar navbar-expand-lg border-bottom  fixed-top" >
-    <div class="container">
-        <img src="img/images.png" height="40" class="me-5">
-        <form class="d-flex" role="search">
-            <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <!--a class="navbar-brand" href="#">Navbar</a-->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <?php 
-                        if (isset($_SESSION['name'])){ ?>
-                            <a class="nav-link" href="#"><?=$_SESSION['name']?></a>
-                        <?php }
-                    ?>
-                </li>
-                
-                <li class="nav-item">
-                    <?php 
-                        if (!isset($_SESSION['name'])){ ?>
-                            <a class="nav-link" href="loginindex.php">Login</a>
-                        <?php } 
-                            else { ?>
-                                <a class="nav-link" href="logout.php">Log out</a>
-                            <?php }
-                        ?>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
 
     <section class="detail">
-        <div class="container-xl" style="margin-top:90px">
+        <div class="container-xl" style="margin-top:20px">
             <div class="border rounded">
                 <div class="row">
                     <?php
@@ -73,9 +33,12 @@
                                 <div class="col-5">
                                     <img src="<?=$row['img']?>" style="width: 30rem;display:flex;margin: 10px auto;">
                                 </div>
+                                <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                 <div class="col-7 mt-2">
                                     <h3><?=$row['ten_san_pham']?></h3>
+                                    <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                     <h1 style="color:blue"><?= number_format($row["gia"]) ?>đ</h1>
+                                    <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
                                     <div class="row">
                                         <div class="col-3">
                                             <p>Quy cách</p>
@@ -110,7 +73,7 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-primary btn-lg">Chọn mua</button>
+                                            <button class="btn btn-primary btn-lg" name="mua">Chọn mua</button>
                                         </div>
                                     </div>
                                 </div>

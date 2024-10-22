@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +15,8 @@
     <nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary">
         <div class="container">
             <a href="index.php"><img src="img/images.png" height="40" class="me-5"></a>
-            <form class="d-flex" role="search">
-                <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" action="list.php">
+                <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Search</button>
             </form>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
