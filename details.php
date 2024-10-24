@@ -1,8 +1,39 @@
 <?php
     require_once 'component\database.php';
-    require 'buy.php';
-    if (isset($_SESSION['detail'])){
-        
+    session_start();
+    if (isset($_POST['mua']) && isset($_SESSION['name'])) {
+        if (isset($_SESSION['cart'])) {
+            $session_arr_id = array_column($_SESSION['cart'],'id');
+            if (!in_array($_GET['id'], $session_arr_id)) {
+                $_sestion_array = array(
+                    'id' => $_GET['id'],
+                    'name' => $_POST['name'],
+                    'gia' => $_POST['gia'],
+                    'img' => $_POST['img'],
+                    'sl' => 1
+                    
+                );
+                $_SESSION['cart'][] = $_sestion_array;
+            }
+            else {
+                foreach ($_SESSION['cart'] as $key => $item){
+                    if ($item['id'] == $_GET['id']){
+                        $_SESSION['cart'][$key]['sl'] +=1;
+                    }
+                }
+            }
+        }
+        else {
+            $_sestion_array = array(
+                'id' => $_GET['id'],
+                'name' => $_POST['name'],
+                'gia' => $_POST['gia'],
+                'img' => $_POST['img'],
+                'sl' => 1
+                
+            );
+            $_SESSION['cart'][] = $_sestion_array;
+        } 
     }
 ?>
 <!DOCTYPE html>
@@ -12,14 +43,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body style="background-color:white">
     <?php include 'navbar.php'; ?>
-
+    <div class="container" style="margin-top:20px">
+        <?php
+            if (isset($_POST['mua']) && isset($_SESSION['name'])) { ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>   Đã thêm vào giỏ hàng</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php }
+            else { ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong> Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng  </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php }
+        ?>
+    </div>
     <section class="detail">
-        <div class="container-xl" style="margin-top:20px">
+        <div class="container-xl" >
             <div class="border rounded">
                 <div class="row">
                     <?php
@@ -33,13 +78,14 @@
                                 <div class="col-5">
                                     <img src="<?=$row['img']?>" style="width: 30rem;display:flex;margin: 10px auto;">
                                 </div>
-                                <input type="hidden" name="img" value="<?= $row['img'] ?>">
-                                <div class="col-7 mt-2">
+                                
+                                <form class="col-7 mt-2" method="post">
+                                    <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                     <h3><?=$row['ten_san_pham']?></h3>
                                     <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                     <h1 style="color:blue"><?= number_format($row["gia"]) ?>đ</h1>
                                     <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
-                                    <div class="row">
+                                    <div class="row" >
                                         <div class="col-3">
                                             <p>Quy cách</p>
                                         </div>
@@ -73,10 +119,10 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-primary btn-lg" name="mua">Chọn mua</button>
+                                            <input type="submit" name="mua" class="btn btn-primary col" style="width:80px"  value="Mua"></input>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             <?php }
                             }
                         }

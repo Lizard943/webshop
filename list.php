@@ -34,7 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php include 'navbar.php'?>
@@ -69,61 +69,6 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="gia">
-                        <i class="fas fa-filter ms-1"></i>
-                        <label class="ms-1"><strong>Bộ lọc nâng cao</strong></label>
-                        <ul>
-                            <li>
-                                <input type="radio" name="fruit" value="apple">
-                                <label for="apple">Táo</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="banana">
-                                <label for="banana">Chuối</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="orange">
-                                <label for="orange">Cam</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="gia">
-                        <i class="fas fa-filter ms-1"></i>
-                        <label class="ms-1"><strong>Bộ lọc nâng cao</strong></label>
-                        <ul>
-                            <li>
-                                <input type="radio" name="fruit" value="apple">
-                                <label for="apple">Táo</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="banana">
-                                <label for="banana">Chuối</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="orange">
-                                <label for="orange">Cam</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="gia">
-                        <i class="fas fa-filter ms-1"></i>
-                        <label class="ms-1"><strong>Bộ lọc nâng cao</strong></label>
-                        <ul>
-                            <li>
-                                <input type="radio" name="fruit" value="apple">
-                                <label for="apple">Táo</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="banana">
-                                <label for="banana">Chuối</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="orange">
-                                <label for="orange">Cam</label>
-                            </li>
-                        </ul>
-                    </div>  
-
                 </form>  
                 <div class="danhsach col-9">
                     <h4>Danh sách sản phẩm</h4>

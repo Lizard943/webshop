@@ -76,7 +76,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#on-sale">
+            <a href="list.php">
                 <div class="card site-item">
                     <div class="row">
                         <div class="col-1">  
@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-7">
                             <div class="card-body">
-                                <h5 class="card-text mt-1">Giảm giá</h5>
+                                <h5 class="card-text mt-1">Tất cả sp</h5>
                             </div>
                         </div>
                     </div>

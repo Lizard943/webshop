@@ -1,44 +1,10 @@
 <?php
     require_once 'component\database.php';
     session_start();
-    if (isset($_POST['mua']) && isset($_SESSION['name'])) {
-        if (isset($_SESSION['cart'])) {
-            $session_arr_id = array_column($_SESSION['cart'], 'id');
-            if (!in_array($_GET['id'], $session_arr_id)) {
-                $_sestion_array = array(
-                    'id' => $_GET['id'],
-                    'name' => $_POST['name'],
-                    'gia' => $_POST['gia'],
-                    'img' => $_POST['img'],
-                    'sl' => 1
-                    
-                );
-                $_SESSION['cart'][] = $_sestion_array;
-            }
-            else {
-                foreach ($_SESSION['cart'] as $key => $item){
-                    if ($item['id'] == $_GET['id']){
-                        $_SESSION['cart'][$key]['sl'] +=1;
-                    }
-                }
-            }
-        }
-        else {
-            $_sestion_array = array(
-                'id' => $_GET['id'],
-                'name' => $_POST['name'],
-                'gia' => $_POST['gia'],
-                'img' => $_POST['img'],
-                'sl' => 1
-                
-            );
-            $_SESSION['cart'][] = $_sestion_array;
-        } 
-    }
     if (isset($_GET['action'])){
         if ($_GET['action'] == 'ct'){
             $_SESSION["detail"] = $_GET['id'];
-            header("Location:details.php");                     
+            header("Location:details.php?id=".$_SESSION["detail"]);                     
         }
     }
     
@@ -118,7 +84,7 @@
                         
                             <div class="col-2 my-2">
                                 <form class="card" style="width: 12rem;" method="post" action="index.php?id=<?= $row['id'] ?>">
-                                    <a href="index.php?action=ct&id=<?= $row['id'] ?>" name="detail">
+                                    <a href="index.php?action=ct&id=<?= $row['id'] ?>">
                                         <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
                                     </a>
                                     <input type="hidden" name="img" value="<?= $row['img'] ?>">
@@ -126,9 +92,8 @@
                                         <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
                                         <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                         <div class="row" style="position:absolute;bottom:10px;">
-                                            <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format($row["gia"]) ?>đ</p>
+                                            <p class="col" style="color:red;font-weight:bold;" name="gia"><?= number_format($row["gia"]) ?>đ</p>
                                             <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
-                                            <input type="submit" name="mua" class="btn btn-primary col" style="width:80px"  value="Mua"></input>
                                         </div>
                                     </div>
                                 </form>
@@ -171,7 +136,6 @@
                                         <div class="row" style="position:absolute;bottom:10px;">
                                             <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format($row["gia"]) ?>đ</p>
                                             <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
-                                            <input type="submit" name="mua" class="btn btn-primary col" style="width:80px"  value="Mua"></input>
                                         </div>
                                     </div>
                                 </form>
