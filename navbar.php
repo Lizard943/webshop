@@ -33,7 +33,7 @@
                     <li class="nav-item">
                         <?php 
                             if (isset($_SESSION['name'])){ ?>
-                                <a class="nav-link" href="#"><?=$_SESSION['name']?></a>
+                                <a class="nav-link" href="myorder.php"><?=$_SESSION['name']?></a>
                             <?php }
                         ?>
                     </li>

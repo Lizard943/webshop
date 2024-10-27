@@ -8,7 +8,7 @@
         }
     }
     if(isset($_POST['gui'])) {
-        $sql = "";
+        $sql = "INSERT INTO feedback (ten, sdt, email, gopy) VALUES ('".$_POST['ten']."', '".$_POST['sdt']."', '".$_POST['email']."', '".$_POST['fback']."');";
         if (mysqli_query($conn, $sql)) {
             
         } else {
@@ -88,7 +88,6 @@
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
-                // Hiển thị dữ liệu
                     while($row = $result->fetch_assoc()) { ?>
 
                             <div class="col-2 my-2">
@@ -101,7 +100,7 @@
                                         <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
                                         <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                         <div class="row justify-content-between" style="position:absolute;bottom:10px;">
-                                            <p class="col" style="color:red;font-weight:bold;display:flex;" name="gia"><?= tinhgia($row['id'],$row["gia"],$conn) ?>đ</p>
+                                            <p class="col" style="color:red;font-weight:bold;display:flex;" name="gia"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</p>
                                             <p class="col" style="color:gray;display:flex;" name="gia"><s><?= number_format($row["gia"]) ?>đ</s></p>
                                             <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
                                         </div>
@@ -145,7 +144,7 @@
                                         <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
                                         <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                         <div class="row" style="position:absolute;bottom:10px;">
-                                            <p class="col" style="color:red;font-weight:bold;" name="gia"><?= tinhgia($row['id'],$row["gia"],$conn) ?>đ</p>
+                                            <p class="col" style="color:red;font-weight:bold;" name="gia"><?=number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</p>
                                             <p class="col" style="color:gray;" name="gia"><s><?= number_format($row["gia"]) ?>đ</s></p>
                                             <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
                                         </div>
@@ -189,7 +188,7 @@
                                         <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
                                         <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                         <div class="row" style="position:absolute;bottom:10px;">
-                                            <p class="col" style="color:red;font-weight:bold;" name="gia"><?= tinhgia($row['id'],$row["gia"],$conn) ?>đ</p>
+                                            <p class="col" style="color:red;font-weight:bold;" name="gia"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</p>
                                             <p class="col" style="color:gray;" name="gia"><s><?= number_format($row["gia"]) ?>đ</s></p>
                                             <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
                                             

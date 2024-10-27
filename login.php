@@ -23,12 +23,14 @@ if (isset($_POST['login'])) {
     } else {
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_array($result);
+            $id = $row['id'];
             $name = $row['name'];
             $username = $row['username'];
             $password = $row['password'];
 
 
             if ($username == $username && $password == $password) {
+                $_SESSION['userid'] = $id;
                 $_SESSION['name'] = $name;
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;

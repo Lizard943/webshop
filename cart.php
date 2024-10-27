@@ -51,7 +51,7 @@
                     <li class="nav-item">
                         <?php 
                             if (isset($_SESSION['name'])){ ?>
-                                <a class="nav-link" href="#"><?=$_SESSION['name']?></a>
+                                <a class="nav-link" href="myorder.php"><?=$_SESSION['name']?></a>
                             <?php }
                         ?>
                     </li>
@@ -97,13 +97,13 @@
                                                         <h5><?=$item['name']?></h5>
                                                     </div>
                                                     <div class="col col-md-2 pt-2">
-                                                        <h6 class><?=number_format($item['gia'])?></h6>
+                                                        <h6 class><?=number_format($item['gia'])?>đ</h6>
                                                     </div>
                                                     <div class="col col-md-1">
                                                         <input type="number" min=1 name="<?=$item['id']?>" style="width: 50px;" value="<?=$item['sl']?>">
                                                     </div> 
                                                     <div class="col col-md-2 pt-2">
-                                                        <h6 class="ps-4"><?=number_format($item['sl']*$item['gia'])?></h6>
+                                                        <h6 class="ps-4"><?=number_format($item['sl']*$item['gia'])?>đ</h6>
                                                     </div>
                                                     <div class="col col-md-1">
                                                         <button type="submit" name="xoa" value="<?=$item['id']?>" class="btn btn-primary">Xoá</button>
@@ -132,12 +132,7 @@
                                     <div class="col-4">
                                         <p><?=number_format($sum)?>đ</p>
                                     </div>
-                                    <div class="col-8">
-                                        <p>COD:</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <p><?php if($sum!=0){ echo "22,000đ";}?></p>
-                                    </div>
+                                    
                                     <hr style="margin-left:12px;width:250px">
                                     <div class="col-8">
                                         <p>Tổng thanh toán:</p>

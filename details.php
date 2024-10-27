@@ -50,7 +50,7 @@
     <div class="container" style="margin-top:20px">
         <?php
             if (isset($_POST['mua']) && isset($_SESSION['name'])) { ?>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <strong>   Đã thêm vào giỏ hàng</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -86,11 +86,11 @@
                                     <h3><?=$row['ten_san_pham']?></h3>
                                     <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                     <div class="row justify-content-start">
-                                        <h1 class="col-3" style="color:blue"><?= tinhgia($row['id'],$row["gia"],$conn) ?>đ</h1>
+                                        <h1 class="col-3" style="color:blue"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</h1>
                                         <h3 class="col-3 mt-2" style="color:gray"><s><?= number_format($row["gia"]) ?>đ</s></h3>
                                     </div>
                                     
-                                    <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
+                                    <input type="hidden" name="gia" value="<?= tinhgia($row['id'],$row["gia"],$conn) ?>">
                                     <div class="row" >
                                         <div class="col-3">
                                             <p>Quy cách</p>
