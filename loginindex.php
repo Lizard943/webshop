@@ -26,20 +26,20 @@
                     
                     <div class="form-outline mb-4">
                       <label class="form-label"> <i class="bi bi-person-circle"></i>Tài khoản</label>
-                      <input type="email" class="form-control form-control-lg py-3" name="username" autocomplete="off" placeholder="Nhập email" style="border-radius:25px ;" />
+                      <input type="email" class="form-control form-control-lg py-3" name="username" autocomplete="off" placeholder="Nhập email" style="border-radius:25px ;" >
 
                     </div>
 
                     
                     <div class="form-outline mb-4">
                       <label class="form-label"><i class="bi bi-chat-left-dots-fill"></i>Mật khẩu</label>
-                      <input type="password" class="form-control form-control-lg py-3" name="password" autocomplete="off" placeholder="Nhập mật khẩu" style="border-radius:25px ;" />
+                      <input type="password" class="form-control form-control-lg py-3" name="password" autocomplete="off" placeholder="Nhập mật khẩu" style="border-radius:25px ;" >
 
                     </div>
 
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <input type="submit" value="Sign in" name="login" class="btn btn-primary btn-lg text-light my-2 py-3" style="width:100% ; border-radius: 30px; font-weight:600;" />
+                      <input type="submit" value="Sign in" name="login" class="btn btn-primary btn-lg text-light my-2 py-3" style="width:100% ; border-radius: 30px; font-weight:600;" >
                     </div>
 
                   </form><br>

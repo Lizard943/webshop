@@ -92,22 +92,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#gop-y">
-                <div class="card site-item">
-                    <div class="row">
-                        <div class="col-1">  
-                        </div>
-                        <div class="col-3">
-                            <img src="img/coupon.png"> 
-                        </div>
-                        <div class="col-7">
-                            <div class="card-body">
-                                <h5 class="card-text mt-1">Góp ý</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            
         </div>
     </section>
 </body>

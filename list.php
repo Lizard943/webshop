@@ -83,15 +83,18 @@
                                     
                                         <div class="col-3 my-2">
                                             <div class="card" style="width: 14rem;">
+                                                
                                                 <a href="index.php?action=ct&id=<?= $row['id'] ?>" name="detail">
+                                                    <?=checksale($row['id'],$conn)?>
                                                     <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
                                                 </a>
                                                 <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                                 <div class="card-body" style="height:12rem">
                                                     <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
                                                     <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
-                                                    <div class="row" style="position:absolute;bottom:10px;">
-                                                        <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format($row["gia"]) ?>đ</p>
+                                                    <div class="row justify-content-between" style="position:absolute;bottom:10px;">
+                                                        <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= tinhgia($row['id'],$row["gia"],$conn) ?>đ</p>
+                                                        <p class="col" style="color:gray;display:flex;margin: auto 0px;" name="gia"><s><?= number_format($row["gia"]) ?>đ</s></p>
                                                         <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
                                                         
                                                     </div>

@@ -87,12 +87,12 @@ nav {
 }
 /*---------------------------------------------*/
 .feedback {
-    margin-top: 70px;
+    
     background-color: lightblue;
-    padding: 20px 0;
+    padding-bottom: 20px;
 }
 .feedback .container {
-    width: 50%;
+    width: 90%;
 }
 
 /*---------------------------------------------*/

@@ -5,7 +5,7 @@ include_once('component\database.php');
 if (isset($_POST['login'])) {
 
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
+    $password = $_POST['password'];
 
     $sql = "SELECT * FROM `tbl_user` WHERE `username`='$username' AND `password`='$password'";
     $result = mysqli_query($conn, $sql);

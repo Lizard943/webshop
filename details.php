@@ -10,7 +10,7 @@
                     'name' => $_POST['name'],
                     'gia' => $_POST['gia'],
                     'img' => $_POST['img'],
-                    'sl' => 1
+                    'sl' => $_POST['sl']
                     
                 );
                 $_SESSION['cart'][] = $_sestion_array;
@@ -18,7 +18,7 @@
             else {
                 foreach ($_SESSION['cart'] as $key => $item){
                     if ($item['id'] == $_GET['id']){
-                        $_SESSION['cart'][$key]['sl'] +=1;
+                        $_SESSION['cart'][$key]['sl'] += $_POST['sl'];
                     }
                 }
             }
@@ -29,7 +29,7 @@
                 'name' => $_POST['name'],
                 'gia' => $_POST['gia'],
                 'img' => $_POST['img'],
-                'sl' => 1
+                'sl' => $_POST['sl']
                 
             );
             $_SESSION['cart'][] = $_sestion_array;
@@ -75,15 +75,21 @@
 
                             if ($result->num_rows > 0){
                                 while ($row = $result->fetch_assoc()){?>
-                                <div class="col-5">
+                                <div class="col-lg-5">
+                                    <?=checksale($row['id'],$conn)?>
                                     <img src="<?=$row['img']?>" style="width: 30rem;display:flex;margin: 10px auto;">
                                 </div>
                                 
-                                <form class="col-7 mt-2" method="post">
+                                <form class="col-lg-7 mt-2" method="post">
+                                    
                                     <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                     <h3><?=$row['ten_san_pham']?></h3>
                                     <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
-                                    <h1 style="color:blue"><?= number_format($row["gia"]) ?>đ</h1>
+                                    <div class="row justify-content-start">
+                                        <h1 class="col-3" style="color:blue"><?= tinhgia($row['id'],$row["gia"],$conn) ?>đ</h1>
+                                        <h3 class="col-3 mt-2" style="color:gray"><s><?= number_format($row["gia"]) ?>đ</s></h3>
+                                    </div>
+                                    
                                     <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
                                     <div class="row" >
                                         <div class="col-3">
@@ -115,7 +121,7 @@
                                         </div>
                                         <div class="col-9">
                                             <div class="btn-group">
-                                                <input type="number" class="form-control" min=1 value="1" style="width: 50px;">
+                                                <input type="number" name="sl" class="form-control" min=1 value="1" style="width: 50px;">
                                             </div>
                                         </div>
                                         <div class="col">
