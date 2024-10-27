@@ -95,7 +95,7 @@
                                     }else{
                                         ?>
                                              <tr>
-                                                <td colspan="5"> No </td>
+                                                <td colspan="5"> Bạn chưa đặt đơn hàng nào </td>
                                             </tr>
                                             <?php
                                     }
