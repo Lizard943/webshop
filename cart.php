@@ -1,15 +1,21 @@
 <?php
     require_once 'component\database.php';
     session_start();
+    $_SESSION['sum'] = 0;
     if(isset($_POST['xoa'])) {
-        if ($_POST['xoa'] == 'xoa'){
-            foreach ($_SESSION['cart'] as $key => $item){
-                if ($item['id']==$_GET['id']){
-                    unset($_SESSION['cart'][$key]);
-                }
+        foreach ($_SESSION['cart'] as $key => $item){
+            if ($item['id']==$_POST['xoa']){
+                unset($_SESSION['cart'][$key]);
             }
         }
     }
+
+    if(isset($_POST['update'])) {
+        foreach ($_SESSION['cart'] as $key => $item){
+            $_SESSION['cart'][$key]['sl'] = $_POST[$item['id']];
+        }
+    }
+    
 
 ?>
 
@@ -69,16 +75,21 @@
             <div class="row mx-5">
                 <div class="col-9">
                     <div class="shopping-cart">
-                        <h6>My cart</h6>
+                        <form method="post" action="cart.php">
+                            <div class="row row-cols-2 justify-content-between align-items-center">
+                                <h6 class="">My cart</h6>
+                                <input type="submit" name="update" value="Update" class="btn btn-warning me-2" style="width:100px"> 
+                            </div>
+                        
                         <hr>
                         <?php
                             $sum = 0;
                             if (isset($_SESSION['cart']) && isset($_SESSION['name'])) {
                                 foreach ($_SESSION['cart'] as $item){
                                     ?>
-                                        <form method="post" action="cart.php?id=<?=$item['id']?>">
+                                        
                                             <div class="border rounded my-3">
-                                                <div class="row align-items-center ">
+                                                <div class="row align-items-center">
                                                     <div class="col col-md-2">
                                                         <img src="<?=$item['img']?>" alt="anh" class="img-fluid p-4"/>
                                                     </div>
@@ -89,21 +100,25 @@
                                                         <h6 class><?=number_format($item['gia'])?></h6>
                                                     </div>
                                                     <div class="col col-md-1">
-                                                        <input type="number" style="width: 50px;" value="<?=$item['sl']?>">
+                                                        <input type="number" min=1 name="<?=$item['id']?>" style="width: 50px;" value="<?=$item['sl']?>">
                                                     </div> 
                                                     <div class="col col-md-2 pt-2">
-                                                        <h6></h6>
+                                                        <h6 class="ps-4"><?=number_format($item['sl']*$item['gia'])?></h6>
                                                     </div>
                                                     <div class="col col-md-1">
-                                                        <input type="submit" name="xoa" value="xoa" class=""> 
+                                                        <button type="submit" name="xoa" value="<?=$item['id']?>" class="btn btn-primary">Xoá</button>
                                                     </div> 
                                                 </div>
                                             </div>
-                                        </form>
+                                        
                                  <?php 
-                                 $sum += $item['sl']*$item['gia'];}
+                                 $sum += $item['sl']*$item['gia'];
+                                 $_SESSION['sum'] = $sum;
+                                }
                                 }
                             ?>
+                            
+                            </form>
                     </div>
                 </div class="col-3">
                     <div class="mt-4" style="width:320px">
@@ -130,7 +145,7 @@
                                     <div class="col-4">
                                         <p><strong><?=number_format($sum)?>đ</strong></p>
                                     </div>
-                                    <button class="btn btn-primary">Thanh toán</button>
+                                    <a class="btn btn-primary" href="checkout.php">Xác nhận</a>
                                 </div>
                             </div>
                         </form>

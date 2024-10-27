@@ -55,7 +55,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <?php }
-            else { ?>
+            if (!isset($_SESSION['name'])) { ?>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong> Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng  </strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
