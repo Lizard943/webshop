@@ -42,7 +42,7 @@
     <div class="thongke">
         <div class="container mt-3">
             <div class="tk">
-                <h5>Tìm thấy x sản phẩm</h5>
+                <h5></h5>
             </div>
         </div>
     </div>
@@ -93,7 +93,7 @@
                                                     <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
                                                     <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                                     <div class="row justify-content-between" style="position:absolute;bottom:10px;">
-                                                        <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= tinhgia($row['id'],$row["gia"],$conn) ?>đ</p>
+                                                        <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</p>
                                                         <p class="col" style="color:gray;display:flex;margin: auto 0px;" name="gia"><s><?= number_format($row["gia"]) ?>đ</s></p>
                                                         <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
                                                         

@@ -1,45 +1,40 @@
 <?php
-session_start();
-include_once('component\database.php');
+    session_start();
+    include_once('component\database.php');
 
-if (isset($_POST['login'])) {
+    if (isset($_POST['login'])) {
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-    $sql = "SELECT * FROM `tbl_user` WHERE `username`='$username' AND `password`='$password'";
-    $result = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM `tbl_user` WHERE `username`='$username' AND `password`='$password'";
+        $result = mysqli_query($conn, $sql);
 
-    if (empty($_POST['username']) && empty($_POST['password'])) {
-        echo "<script>alert('Please Fill Username and Password');</script>";
-        exit;
         
-    } elseif (empty($_POST['password'])) {
-        echo "<script>alert('Please Fill Password');</script>";
-        exit;
-    } elseif (empty($_POST['username'])) {
-        echo "<script>alert('Please Fill Username);</script>";
-        exit;
-    } else {
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_array($result);
             $id = $row['id'];
             $name = $row['name'];
             $username = $row['username'];
             $password = $row['password'];
+            $role = $row['role'];
 
+            if ($username == $username && $password == $password && $role == 1) {
+                $_SESSION['userid'] = $id;
+                $_SESSION['name'] = $name;
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $password;
+                header('location:Admin\index.php');
+            }
 
-            if ($username == $username && $password == $password) {
+            else if ($username == $username && $password == $password && $role == 0) {
                 $_SESSION['userid'] = $id;
                 $_SESSION['name'] = $name;
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
                 header('location:index.php');
             }
-        } else {
-            echo "<script>alert('Invalid Username or Password');</script>";
-            header("Location:loginindex.php");
-        }
+        } 
+        
     }
-
-}
+?>

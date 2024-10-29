@@ -45,9 +45,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color:white">
+<body>
     <?php include 'navbar.php'; ?>
-    <div class="container" style="margin-top:20px">
+    <div class="container" style="margin-top:20px;">
         <?php
             if (isset($_POST['mua']) && isset($_SESSION['name'])) { ?>
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -65,8 +65,8 @@
     </div>
     <section class="detail">
         <div class="container-xl" >
-            <div class="border rounded">
-                <div class="row">
+            <div class="border rounded " style="background-color:white">
+                <div class="row ms-1">
                     <?php
                         if (isset($_SESSION['detail'])){
                             $choose = $_SESSION['detail'];
@@ -86,8 +86,8 @@
                                     <h3><?=$row['ten_san_pham']?></h3>
                                     <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                     <div class="row justify-content-start">
-                                        <h1 class="col-3" style="color:blue"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</h1>
-                                        <h3 class="col-3 mt-2" style="color:gray"><s><?= number_format($row["gia"]) ?>đ</s></h3>
+                                        <h1 class="col-3 " style="color:blue"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</h1>
+                                        <h3 class="col-3 ms-2 mt-2" style="color:gray"><s><?= number_format($row["gia"]) ?>đ</s></h3>
                                     </div>
                                     
                                     <input type="hidden" name="gia" value="<?= tinhgia($row['id'],$row["gia"],$conn) ?>">
@@ -137,5 +137,81 @@
             </div>
         </div>
     </section>
+
+    <section class="chitiet mt-4">
+        <div class="container-xl">
+            <div class="border rounded p-4" style="background-color:white">
+                <h4>Thông tin chi tiết</h4>
+                <?php
+                    $sql = "SELECT * FROM san_pham WHERE id = $choose";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows>0){ 
+                        $item = $result->fetch_assoc();
+                    ?>
+                        <table class="table table-light table-striped-columns border">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 20%;">Tên sản phẩm</td>
+                                    <td> <?= $item['ten_san_pham']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Danh mục</td>
+                                    <td> <?= $item['danh_muc']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Quy cách</td>
+                                    <td> <?= $item['quy_cach']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Nhà sản xuất</td>
+                                    <td> <?= $item['nha_san_xuat']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Nước sản xuất</td>
+                                    <td> <?= $item['nuoc_san_xuat']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Thành phần</td>
+                                    <td> <?= $item['thanh_phan']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Công dụng</td>
+                                    <td> <?= $item['cong_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Đối tượng sử dụng</td>
+                                    <td> <?= $item['doi_tuong_su_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Cách sử dụng</td>
+                                    <td> <?= $item['cach_su_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Thời hạn sử dụng</td>
+                                    <td> <?= $item['thoi_han_su_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Bảo quản</td>
+                                    <td> <?= $item['bao_quan']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Lưu ý khi sử dụng</td>
+                                    <td> <?= $item['luu_y_khi_su_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Số đăng ký</td>
+                                    <td> <?= $item['so_dang_ky']?> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <?php }
+                ?>
+                
+            </div>
+            
+        </div>
+    </section>
+
+
 </body>
 </html>

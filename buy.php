@@ -9,7 +9,7 @@
                     'name' => $_POST['name'],
                     'gia' => $_POST['gia'],
                     'img' => $_POST['img'],
-                    'sl' => 1
+                    'sl' => $_POST['sl']
                     
                 );
                 $_SESSION['cart'][] = $_sestion_array;
@@ -17,7 +17,7 @@
             else {
                 foreach ($_SESSION['cart'] as $key => $item){
                     if ($item['id'] == $_GET['id']){
-                        $_SESSION['cart'][$key]['sl'] +=1;
+                        $_SESSION['cart'][$key]['sl'] +=$_POST['sl'];
                     }
                 }
             }
@@ -28,7 +28,7 @@
                 'name' => $_POST['name'],
                 'gia' => $_POST['gia'],
                 'img' => $_POST['img'],
-                'sl' => 1
+                'sl' => $_POST['sl']
                 
             );
             $_SESSION['cart'][] = $_sestion_array;

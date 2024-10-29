@@ -1,6 +1,7 @@
 <?php
     include "component/database.php";
     session_start();
+
     function taoMaDonHang() {
         $prefix = "DH"; 
         $randomNumber = mt_rand(1000, 9999); 
@@ -26,6 +27,13 @@
             echo "Lỗi: "  . mysqli_error($conn);
         }
     }
+
+    $sql = "SELECT * FROM tbl_user WHERE id = '".$_SESSION['userid']."'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+    }
+
     
 ?>
 
@@ -59,19 +67,19 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label class="fw-bold">Tên</label>
-                                        <input type="text" Name="name" required placeholder="Họ và Tên"class="form-control">
+                                        <input type="text" Name="name" required placeholder="Họ và Tên"class="form-control" value="<?=$user['name']?>">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="fw-bold">Email</label>
-                                        <input type="email" Name="email"required placeholder="Email"class="form-control">
+                                        <input type="email" Name="email"required placeholder="Email"class="form-control" value="<?=$user['username']?>">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="fw-bold">SĐT</label>
-                                        <input type="text" Name="phone"required placeholder="Số Điện Thoại"class="form-control">
+                                        <input type="text" Name="phone"required placeholder="Số Điện Thoại"class="form-control" value="<?=$user['sdt']?>">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="fw-bold">Địa chỉ</label>
-                                        <input type="text" Name="address"required placeholder="Địa chỉ"class="form-control">
+                                        <input type="text" Name="address"required placeholder="Địa chỉ"class="form-control" value="<?=$user['address']?>">
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label class="fw-bold">Lời nhắn</label>

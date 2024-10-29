@@ -1,3 +1,7 @@
+<?php
+    include_once "login.php";
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -8,6 +12,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,8 +25,25 @@
           <div class="card text-black" style="border-radius: 25px;">
             <div class="card-body">
               <div class="row justify-content-center">
+              <div class="" >
+                <?php
+                  if(isset($_POST['login']))
+                  {
+                    $sql = "SELECT * FROM `tbl_user` WHERE `username`='".$_POST['username']."' AND `password`='".$_POST['password']."'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result)==0) { ?>
+                       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong> Sai tài khoản hoặc mật khẩu !! </strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                      <?php
+                    } 
+                  }
+                ?>
+              </div>
                 <div class="col-md-7 col-lg-5 col-xl-5">
-                  <form action="login.php" method="post">
+                  <form action="loginindex.php" method="post">
                     <p class="text-center h1 fw-bold mb-4 mt-3">Login </p>
                     
                     <div class="form-outline mb-4">
