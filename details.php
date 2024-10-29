@@ -1,8 +1,39 @@
 <?php
     require_once 'component\database.php';
     session_start();
-    if (isset($_SESSION['detail'])){
-        
+    if (isset($_POST['mua']) && isset($_SESSION['name'])) {
+        if (isset($_SESSION['cart'])) {
+            $session_arr_id = array_column($_SESSION['cart'],'id');
+            if (!in_array($_GET['id'], $session_arr_id)) {
+                $_sestion_array = array(
+                    'id' => $_GET['id'],
+                    'name' => $_POST['name'],
+                    'gia' => $_POST['gia'],
+                    'img' => $_POST['img'],
+                    'sl' => $_POST['sl']
+                    
+                );
+                $_SESSION['cart'][] = $_sestion_array;
+            }
+            else {
+                foreach ($_SESSION['cart'] as $key => $item){
+                    if ($item['id'] == $_GET['id']){
+                        $_SESSION['cart'][$key]['sl'] += $_POST['sl'];
+                    }
+                }
+            }
+        }
+        else {
+            $_sestion_array = array(
+                'id' => $_GET['id'],
+                'name' => $_POST['name'],
+                'gia' => $_POST['gia'],
+                'img' => $_POST['img'],
+                'sl' => $_POST['sl']
+                
+            );
+            $_SESSION['cart'][] = $_sestion_array;
+        } 
     }
 ?>
 <!DOCTYPE html>
@@ -12,56 +43,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color:white">
-<nav class="navbar navbar-expand-lg border-bottom  fixed-top" >
-    <div class="container">
-        <img src="img/images.png" height="40" class="me-5">
-        <form class="d-flex" role="search">
-            <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <!--a class="navbar-brand" href="#">Navbar</a-->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <?php 
-                        if (isset($_SESSION['name'])){ ?>
-                            <a class="nav-link" href="#"><?=$_SESSION['name']?></a>
-                        <?php }
-                    ?>
-                </li>
-                
-                <li class="nav-item">
-                    <?php 
-                        if (!isset($_SESSION['name'])){ ?>
-                            <a class="nav-link" href="loginindex.php">Login</a>
-                        <?php } 
-                            else { ?>
-                                <a class="nav-link" href="logout.php">Log out</a>
-                            <?php }
-                        ?>
-                </li>
-            </ul>
-        </div>
+<body>
+    <?php include 'navbar.php'; ?>
+    <div class="container" style="margin-top:20px;">
+        <?php
+            if (isset($_POST['mua']) && isset($_SESSION['name'])) { ?>
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <strong>   Đã thêm vào giỏ hàng</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php }
+            if (!isset($_SESSION['name'])) { ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong> Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng  </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php }
+        ?>
     </div>
-    </nav>
-
     <section class="detail">
-        <div class="container-xl" style="margin-top:90px">
-            <div class="border rounded">
-                <div class="row">
+        <div class="container-xl" >
+            <div class="border rounded " style="background-color:white">
+                <div class="row ms-1">
                     <?php
                         if (isset($_SESSION['detail'])){
                             $choose = $_SESSION['detail'];
@@ -70,13 +75,23 @@
 
                             if ($result->num_rows > 0){
                                 while ($row = $result->fetch_assoc()){?>
-                                <div class="col-5">
+                                <div class="col-lg-5">
+                                    <?=checksale($row['id'],$conn)?>
                                     <img src="<?=$row['img']?>" style="width: 30rem;display:flex;margin: 10px auto;">
                                 </div>
-                                <div class="col-7 mt-2">
+                                
+                                <form class="col-lg-7 mt-2" method="post">
+                                    
+                                    <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                     <h3><?=$row['ten_san_pham']?></h3>
-                                    <h1 style="color:blue"><?= number_format($row["gia"]) ?>đ</h1>
-                                    <div class="row">
+                                    <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
+                                    <div class="row justify-content-start">
+                                        <h1 class="col-3 " style="color:blue"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</h1>
+                                        <h3 class="col-3 ms-2 mt-2" style="color:gray"><s><?= number_format($row["gia"]) ?>đ</s></h3>
+                                    </div>
+                                    
+                                    <input type="hidden" name="gia" value="<?= tinhgia($row['id'],$row["gia"],$conn) ?>">
+                                    <div class="row" >
                                         <div class="col-3">
                                             <p>Quy cách</p>
                                         </div>
@@ -106,14 +121,14 @@
                                         </div>
                                         <div class="col-9">
                                             <div class="btn-group">
-                                                <input type="number" class="form-control" min=1 value="1" style="width: 50px;">
+                                                <input type="number" name="sl" class="form-control" min=1 value="1" style="width: 50px;">
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-primary btn-lg">Chọn mua</button>
+                                            <input type="submit" name="mua" class="btn btn-primary col" style="width:80px"  value="Mua"></input>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             <?php }
                             }
                         }
@@ -122,5 +137,81 @@
             </div>
         </div>
     </section>
+
+    <section class="chitiet mt-4">
+        <div class="container-xl">
+            <div class="border rounded p-4" style="background-color:white">
+                <h4>Thông tin chi tiết</h4>
+                <?php
+                    $sql = "SELECT * FROM san_pham WHERE id = $choose";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows>0){ 
+                        $item = $result->fetch_assoc();
+                    ?>
+                        <table class="table table-light table-striped-columns border">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 20%;">Tên sản phẩm</td>
+                                    <td> <?= $item['ten_san_pham']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Danh mục</td>
+                                    <td> <?= $item['danh_muc']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Quy cách</td>
+                                    <td> <?= $item['quy_cach']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Nhà sản xuất</td>
+                                    <td> <?= $item['nha_san_xuat']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Nước sản xuất</td>
+                                    <td> <?= $item['nuoc_san_xuat']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Thành phần</td>
+                                    <td> <?= $item['thanh_phan']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Công dụng</td>
+                                    <td> <?= $item['cong_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Đối tượng sử dụng</td>
+                                    <td> <?= $item['doi_tuong_su_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Cách sử dụng</td>
+                                    <td> <?= $item['cach_su_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Thời hạn sử dụng</td>
+                                    <td> <?= $item['thoi_han_su_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Bảo quản</td>
+                                    <td> <?= $item['bao_quan']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Lưu ý khi sử dụng</td>
+                                    <td> <?= $item['luu_y_khi_su_dung']?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">Số đăng ký</td>
+                                    <td> <?= $item['so_dang_ky']?> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <?php }
+                ?>
+                
+            </div>
+            
+        </div>
+    </section>
+
+
 </body>
 </html>

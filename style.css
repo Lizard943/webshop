@@ -55,7 +55,7 @@ nav {
 /*-----------------------------------------------------*/
 
 .slider { 
-    width: 80%;
+    width: 78%;
     margin-left: 21%;
     border-radius: 50px;
     border: 1px solid gray;
@@ -63,14 +63,11 @@ nav {
 
 
 /*-------------------------------------------*/
-.on-sale{
-    margin-top: 50px;
-    
-}
+
 .title-box {
-    background: aqua;
+    background: black;
     color: #fff;
-    width: 180px;
+    width: 250px;
     height: 40px;
     padding: 4px 10px;
     margin-bottom: 30px;
@@ -89,13 +86,13 @@ nav {
     box-shadow: 0 0 10px;
 }
 /*---------------------------------------------*/
-.gopy {
-    margin-top: 70px;
+.feedback {
+    
     background-color: lightblue;
-    padding: 20px 0;
+    padding-bottom: 20px;
 }
-.gopy .container {
-    width: 50%;
+.feedback .container {
+    width: 90%;
 }
 
 /*---------------------------------------------*/
@@ -116,7 +113,6 @@ nav {
     padding: 12px 50px
 }
 #ds .boloc{
-    height: inherit;
     background-color: white;
     border-radius: 10px;
     border: 1px solid white;
@@ -133,3 +129,5 @@ nav {
 #ds ul li {    
     margin: 10px 0;
 }
+
+

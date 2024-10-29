@@ -1,30 +1,30 @@
 <?php
     require_once 'component\database.php';
-    session_start();
-    if (isset($_GET['muc'])){
-        if ($_GET['muc'] == 1){
-            $_SESSION['sql'] = "WHERE danh_muc = 'Thận, tiền liệt tuyến' ";
+    require_once 'filter.php';
+    require_once 'buy.php';
+    $_SESSION['sql'] = 'SELECT * FROM san_pham';
+    if (isset($_GET['action'])){
+        if ($_GET['action'] == 'ct'){
+            $_SESSION["detail"] = $_GET['id'];
+            header("Location:details.php");                     
         }
     }
-    if (isset($_GET['gia'])){
-        if ($_GET['gia'] == 'cao'){
-            $_SESSION['sql'] = " ORDER BY gia DESC";
+    if (isset($_GET['search'])){
+        $_SESSION['sql'] = 'SELECT * FROM san_pham WHERE ten_san_pham LIKE \'%'.$_GET['search'].'%\' ';
+    }
+    if (isset($_GET['muc'])){
+        $_SESSION['sql'] = chondanhmuc($_GET['muclon'],$_GET['muc']);
+    }
+    if (isset($_POST['gia'])){
+        if ($_POST['gia'] == 'cao'){
+            $_SESSION['sql'] .= " ORDER BY gia DESC";
         }
-        if ($_GET['gia'] == 'thap'){
-            $_SESSION['sql'] = " ORDER BY gia ASC";
+        if ($_POST['gia'] == 'thap'){
+            $_SESSION['sql'] .= " ORDER BY gia ASC";
         }
     }
 
-    function dem($conn,$t){
-        $sql = "SELECT COUNT(*) FROM san_pham " . $t;
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            echo $row["COUNT(*)"];
-        } else {
-            echo "0";
-        }
-    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php include 'navbar.php'?>
@@ -42,7 +42,7 @@
     <div class="thongke">
         <div class="container mt-3">
             <div class="tk">
-                <h5>Tìm thấy <?=dem($conn,$_SESSION['sql'])?> sản phẩm</h5>
+                <h5></h5>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
     <section id="ds">
         <div class="container mt-3">
             <div class="row justify-content-between">
-                <form class="boloc col-auto" method="get" action="list.php" style="width:300px">
+                <form class="boloc col-auto" method="post" action="" style="width:300px">
                     <i class="fas fa-filter ms-1"></i>
                     <label class="ms-1"><strong>Bộ lọc nâng cao</strong></label>
                     <input type="submit" name="">
@@ -60,76 +60,21 @@
                         <label class="ms-1"><strong>Sắp xếp theo</strong></label>
                         <ul>
                             <li>
-                                <input type="radio" name="gia" value="cao" <?php if (isset($_GET['gia']) && $_GET['gia'] == 'cao'){echo "checked";}?> >
+                                <input type="radio" name="gia" value="cao" <?php if (isset($_POST['gia']) && $_POST['gia'] == 'cao'){echo "checked";}?> >
                                 <label>Giá cao</label>
                             </li>
                             <li>
-                                <input type="radio" name="gia" value="thap" <?php if (isset($_GET['gia']) && $_GET['gia'] == 'thap'){echo "checked";}?> >
+                                <input type="radio" name="gia" value="thap" <?php if (isset($_POST['gia']) && $_POST['gia'] == 'thap'){echo "checked";}?> >
                                 <label>Giá thấp</label>
                             </li>
                         </ul>
                     </div>
-                    <div class="gia">
-                        <i class="fas fa-filter ms-1"></i>
-                        <label class="ms-1"><strong>Bộ lọc nâng cao</strong></label>
-                        <ul>
-                            <li>
-                                <input type="radio" name="fruit" value="apple">
-                                <label for="apple">Táo</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="banana">
-                                <label for="banana">Chuối</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="orange">
-                                <label for="orange">Cam</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="gia">
-                        <i class="fas fa-filter ms-1"></i>
-                        <label class="ms-1"><strong>Bộ lọc nâng cao</strong></label>
-                        <ul>
-                            <li>
-                                <input type="radio" name="fruit" value="apple">
-                                <label for="apple">Táo</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="banana">
-                                <label for="banana">Chuối</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="orange">
-                                <label for="orange">Cam</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="gia">
-                        <i class="fas fa-filter ms-1"></i>
-                        <label class="ms-1"><strong>Bộ lọc nâng cao</strong></label>
-                        <ul>
-                            <li>
-                                <input type="radio" name="fruit" value="apple">
-                                <label for="apple">Táo</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="banana">
-                                <label for="banana">Chuối</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="fruit" value="orange">
-                                <label for="orange">Cam</label>
-                            </li>
-                        </ul>
-                    </div>  
-
                 </form>  
                 <div class="danhsach col-9">
                     <h4>Danh sách sản phẩm</h4>
                     <div class="row justify-content-start">
                         <?php
-                            $sql = "SELECT * FROM san_pham " .$_SESSION['sql'];
+                            $sql = $_SESSION['sql'];
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
@@ -137,21 +82,24 @@
                                 while($row = $result->fetch_assoc()) { ?>
                                     
                                         <div class="col-3 my-2">
-                                            <form class="card" style="width: 14rem;" method="post" action="list.php?id=<?= $row['id'] ?>">
+                                            <div class="card" style="width: 14rem;">
+                                                
                                                 <a href="index.php?action=ct&id=<?= $row['id'] ?>" name="detail">
+                                                    <?=checksale($row['id'],$conn)?>
                                                     <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
                                                 </a>
                                                 <input type="hidden" name="img" value="<?= $row['img'] ?>">
-                                                <div class="card-body" style="height:14rem">
+                                                <div class="card-body" style="height:12rem">
                                                     <p class="card-text " ><?= $row['ten_san_pham'] ?></p>
                                                     <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
-                                                    <div class="row" style="position:absolute;bottom:10px;">
-                                                        <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format($row["gia"]) ?>đ</p>
+                                                    <div class="row justify-content-between" style="position:absolute;bottom:10px;">
+                                                        <p class="col" style="color:red;font-weight:bold;display:flex;margin: auto 0;" name="gia"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</p>
+                                                        <p class="col" style="color:gray;display:flex;margin: auto 0px;" name="gia"><s><?= number_format($row["gia"]) ?>đ</s></p>
                                                         <input type="hidden" name="gia" value="<?= $row['gia'] ?>">
-                                                        <input type="submit" name="mua" class="btn btn-primary col" style="width:100px;margin-left:10px"  value="Mua"></input>
+                                                        
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     
                             <?php   }
@@ -176,5 +124,6 @@
             </div>
         </div>
     </section>
+    <?php unset($_SESSION['sql']) ?>
 </body>
 </html>

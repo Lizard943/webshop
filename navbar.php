@@ -1,5 +1,5 @@
-<?php 
-    
+<?php
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,9 +14,9 @@
 <body>
     <nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary">
         <div class="container">
-            <img src="img/images.png" height="40" class="me-5">
-            <form class="d-flex" role="search">
-                <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <a href="index.php"><img src="img/images.png" height="40" class="me-5"></a>
+            <form class="d-flex" action="list.php">
+                <input id="search" name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> 
                 <button class="btn btn-outline-light" type="submit">Search</button>
             </form>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
                     <li class="nav-item">
                         <?php 
                             if (isset($_SESSION['name'])){ ?>
-                                <a class="nav-link" href="#"><?=$_SESSION['name']?></a>
+                                <a class="nav-link" href="myorder.php"><?=$_SESSION['name']?></a>
                             <?php }
                         ?>
                     </li>
@@ -55,26 +55,32 @@
     <div class="danhmuc">
         <div class="container">
             <div class="btn-group">
-                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Hỗ trợ điều trị
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="list.php?muc=1">Thận, tiền liệt tuyến</a></li>
-                    <li><a class="dropdown-item" href="#">Cơ xương khớp</a></li>
-                    <li><a class="dropdown-item" href="#">Hô hấp, ho, xoang</a></li>              
-                </ul>
-
-                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Hỗ trợ tiêu hoá
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Vi sinh - Probiotic</a></li>
-                    <li><a class="dropdown-item" href="#">Dạ dày, tá tràng</a></li>
-                    <li><a class="dropdown-item" href="#">Táo bón</a></li>
-                    <li><a class="dropdown-item" href="#">Đại tràng</a></li>
-                    <li><a class="dropdown-item" href="#">Hỗ trợ tiêu hóa</a></li>
-                    <li><a class="dropdown-item" href="#">Khó tiêu</a></li>
-                </ul>
+                <?php
+                    $sql = "SELECT * FROM muclon";
+                    $result = $conn->query($sql);
+                    
+                    if ($result->num_rows > 0) {
+                        // Hiển thị dữ liệu
+                            while($row = $result->fetch_assoc()) {
+                                $_SESSION["idmuc"] = $row['id']; 
+                                ?>
+                                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?= $row['ten_muc']?>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <?php
+                                        $sql1 = "SELECT * FROM muc WHERE id = " .$_SESSION['idmuc'];
+                                        $result1 = $conn->query($sql1);
+                                        if ($result1->num_rows > 0) {
+                                            while($row = $result1->fetch_assoc()) {?>
+                                                <li><a class="dropdown-item" href="list.php?muclon=<?=$row['id']?>&muc=<?=$row['id_danh_muc']?>"><?=$row['danh_muc']?></a></li>
+                                            <?php }
+                                        } 
+                                    ?>
+                                </ul>
+                        <?php }
+                        } 
+                     ?>
             </div>
         </div>
     </div>
