@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM orders ";
+            $sql = "SELECT * FROM orders ORDER BY status ASC";
             $result = $conn->query($sql);
             $count = 1;
             if ($result->num_rows > 0) {

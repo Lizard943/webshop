@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="card">
                         <div class="card-header bg-primary">
                             <span class="text-white fs-3">Xem Đơn Hàng</span>
-                            <a href="admin-orders.php" class="btn btn-warning float-right mb-2 ms-4"> Trở Về</a>
+                            
                         </div>
                         <div class="card-body">
                             <div class="row">

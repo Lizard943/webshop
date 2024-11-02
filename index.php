@@ -8,7 +8,8 @@
         }
     }
     if(isset($_POST['gui'])) {
-        $sql = "INSERT INTO feedback (ten, sdt, email, gopy) VALUES ('".$_POST['ten']."', '".$_POST['sdt']."', '".$_POST['email']."', '".$_POST['fback']."');";
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $sql = "INSERT INTO feedback (userid ,ngay_gui ,tieude, gopy) VALUES ('".$_SESSION['userid']."','".date('H:i d/m/Y')."', '".$_POST['tieude']."', '".$_POST['fback']."');";
         if (mysqli_query($conn, $sql)) {
             
         } else {
@@ -208,7 +209,7 @@
         </div>
     </div>
 
-    
+    <?php if (isset($_SESSION['taikhoan'])) { ?>
     <div class="feedback" id="feedback">
         <div class="container">
             <form method="post" action="index.php">
@@ -216,24 +217,14 @@
                     <h2>Góp ý</h2>
                 </div>
                 <div class="row">
-                    <div class="col-6">
-                        <div class="row">
-                            <div class="col-6 mb-3">
-                                <label for="" class="form-label">Tên</label>
-                                <input type="text" class="form-control" name="ten" >
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="" class="form-label">SĐT</label>
-                                <input type="text" class="form-control" name="sdt" >
-                            </div>
-                        </div>         
+                    <div class="col-6">        
                         <div class="mb-3">
-                            <label for="" class="form-label">Email</label>
-                            <input type="text" class="form-control" name="email" placeholder="name@example.com">
+                            <label for="" class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" name="tieude" placeholder="Tiêu đề">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Góp ý</label>
-                            <textarea class="form-control" rows="3" name="fback"></textarea>
+                            <textarea class="form-control" rows="7" name="fback"></textarea>
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary" name="gui">Gửi</button>
@@ -241,7 +232,7 @@
                     </div>
                     <div class="col-6">           
                         <div class="mapswrapper">
-                            <iframe width="600" height="350" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Tr%C6%B0%E1%BB%9Dng%20%C4%90%E1%BA%A1i%20h%E1%BB%8Dc%20kinh%20t%E1%BA%BF%20k%E1%BB%B9%20thu%E1%BA%ADt%20c%C3%B4ng%20ngh%E1%BB%87p%20l%C4%A9nh%20nam&zoom=15&maptype=roadmap"></iframe>
+                            <iframe width="635" height="350" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Tr%C6%B0%E1%BB%9Dng%20%C4%90%E1%BA%A1i%20h%E1%BB%8Dc%20kinh%20t%E1%BA%BF%20k%E1%BB%B9%20thu%E1%BA%ADt%20c%C3%B4ng%20ngh%E1%BB%87p%20l%C4%A9nh%20nam&zoom=15&maptype=roadmap"></iframe>
                             <a href="https://www.taxuni.com/new-york-tax-brackets/">New York Tax Brackets</a>
                             <style>.mapswrapper{background:#fff;position:relative}.mapswrapper iframe{border:0;position:relative;z-index:2}.mapswrapper a{color:rgba(0,0,0,0);position:absolute;left:0;top:0;z-index:0}</style>
                         </div>
@@ -250,7 +241,7 @@
             </form>
         </div>
     </div>
-    
+    <?php } ?>
     <section class="footer">
         <div class="container">
             <div class="row">

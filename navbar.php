@@ -16,8 +16,8 @@
         <div class="container">
             <a href="index.php"><img src="img/images.png" height="40" class="me-5"></a>
             <form class="d-flex" action="list.php">
-                <input id="search" name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> 
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <input id="search" name="search" class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search"> 
+                <button class="btn btn-outline-light" type="submit">Tìm</button>
             </form>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -75,8 +75,10 @@
                                             while($row = $result1->fetch_assoc()) {?>
                                                 <li><a class="dropdown-item" href="list.php?muclon=<?=$row['id']?>&muc=<?=$row['id_danh_muc']?>"><?=$row['danh_muc']?></a></li>
                                             <?php }
+                                            
                                         } 
                                     ?>
+                                    <li><a class="dropdown-item" href="list.php?muclon=<?=$_SESSION["idmuc"]?>&muc=0">Tất cả</a></li>
                                 </ul>
                         <?php }
                         } 

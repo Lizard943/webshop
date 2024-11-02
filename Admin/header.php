@@ -25,7 +25,7 @@
                 <hr class="d-flex flex-column text-white">
                 <ul class="nav flex-column fs-5" >
                     <li class="nav-item">
-                        <a href="admin.php" class="nav-link text-white" aria-current="page">
+                        <a href="..\Admin\index.php" class="nav-link text-white" aria-current="page">
                             <i class="bi bi-house-door-fill"></i>
                             <span class="ms-2">Trang chủ</span>
                         </a>
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="#" class="nav-link text-white" aria-current="page">
+                        <a href="admin-products.php" class="nav-link text-white" aria-current="page">
                             <i class="bi bi-list-check"></i>
                             <span class="ms-2">Sản phẩm</span>
                         </a>
@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="#" class="nav-link text-white" aria-current="page">
+                        <a href="admin-feedback.php" class="nav-link text-white" aria-current="page">
                             <i class="bi bi-inbox"></i>
                             <span class="ms-2">Góp ý</span>
                         </a>
@@ -62,8 +62,10 @@
                     <div class="bg-dark" style="height:70px;margin-top: -10px;box-shadow: 0 0 5px;z-index:-1">
                         <div class="container pt-4 text-white">
                             <div class="row justify-content-end">
-                                <div class="col-auto"><p>test</p></div>
-                                <div class="col-auto">test</div>
+                                <div class="col-auto">
+                                    <?=$_SESSION['admin']?>
+                                </div>
+                                <div class="col-auto"><a href="../loginindex.php">Đăng xuất</a></div>
                             </div>
                         </div>
                         

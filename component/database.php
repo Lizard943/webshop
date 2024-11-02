@@ -24,6 +24,50 @@
             return $gia*((100-5)/100);
         }
     }
+    function doanhthu($conn){
+        $sql = "SELECT SUM(total) FROM orders";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['SUM(total)'];
+        } else {
+            
+        }
+        
+    }
+    function donhang($conn){
+        $sql = "SELECT COUNT(*) FROM orders";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['COUNT(*)'];
+        } else {
+            
+        }
+        
+    }
+    function taikhoan($conn){
+        $sql = "SELECT COUNT(*) FROM tbl_user";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['COUNT(*)'];
+        } else {
+            
+        }
+        
+    }
+    function gopy($conn){
+        $sql = "SELECT COUNT(*) FROM feedback";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['COUNT(*)'];
+        } else {
+            
+        }
+        
+    }
     function checksale($id,$conn){
         $sql = "SELECT * FROM sale";
         $result = $conn->query($sql);
