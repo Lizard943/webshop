@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once('component\database.php');
-
+    
     if (isset($_POST['login'])) {
 
         $username = $_POST['username'];
@@ -21,7 +21,7 @@
 
             if ($username == $username && $password == $password && $role == 1) {
                 $_SESSION['userid'] = $id;
-                $_SESSION['name'] = $name;
+                $_SESSION['admin'] = $name;
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
                 header('location:Admin\index.php');
