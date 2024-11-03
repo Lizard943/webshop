@@ -1,7 +1,7 @@
 body {
     background-color: #e1eaf7;
 }
-/*----------------------------------------------------------------*/
+/*----------------------navbar---------------------------*/
 nav {
     background-image: url(img/background1.jpg);
 }
@@ -12,7 +12,7 @@ nav {
     border: 1px solid gray;
     width: 400px;
 }
-/*----------------------------------------------------------------*/
+/*-------------------------danh mục--------------------------------*/
 .danhmuc {
     height: 40px;
     background-color: white;
@@ -21,9 +21,7 @@ nav {
 }
 
 
-
-
-/*----------------------------------------------------------------*/
+/*------------------------side-menu------------------------------*/
 .side-menu {
     height: 500px;
     width: 20%;
@@ -52,7 +50,7 @@ nav {
 .side-menu ul li:hover{
     color: orange;
 }
-/*-----------------------------------------------------*/
+/*--------------------slider---------------------------*/
 
 .slider { 
     width: 78%;
@@ -62,7 +60,7 @@ nav {
 }
 
 
-/*-------------------------------------------*/
+/*----------------title mỗi mục--------------------*/
 
 .title-box {
     background: black;
@@ -78,14 +76,14 @@ nav {
     font-size: 24px;
 }
 
-/*---------------------------------------------*/
+/*---------------3 ảnh qc---------------------*/
 
 .feature-categories img{
     width: 400px;
     border-radius: 50px;
     box-shadow: 0 0 10px;
 }
-/*---------------------------------------------*/
+/*------------------góp ý-------------------*/
 .feedback {
     
     background-color: lightblue;
@@ -95,15 +93,26 @@ nav {
     width: 90%;
 }
 
-/*---------------------------------------------*/
+/*--------------footer----------------------*/
 .footer{
     padding-top: 50px;
     margin-top: 50px;
-    background: #000;
+    background: rgb(48, 48, 48);
     color: #fff;
+    font-size: 18px;
+}
+.footer ul li {
+    list-style-type: disc;
+}
+.footer ul li p{
+    font-size: 12px;
+}
+.footer ul li a{
+    text-decoration: none;
+    color: inherit;
 }
 
-/*----------------------------------------*/
+/*-----------------danh sách sp----------------*/
 .thongke .container {
     height: 50px;
     background-color: white;

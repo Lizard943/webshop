@@ -6,28 +6,21 @@ if (isset($_GET['id'])) {
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $data = mysqli_fetch_array($result);
-        $chietkhau = onsale($id,$conn);
+        $chietkhau = onsale($id, $conn);
     } else {
         echo "0 kết quả";
     }
 } else {
     die();
 }
-function onsale($id,$conn){
-    $sql1 = "SELECT * FROM sale WHERE id = '$id'";
-    $result1 = $conn->query($sql1);
-    if ($result1->num_rows > 0) {
-        $sale = mysqli_fetch_array($result1);
-        return $sale['chietkhau'];
-    } else {
-        return 5;
-    }
-}
+
 if (isset($_POST['doigia'])) {
     $giamoi = $_POST['giamoi'];
     $ckmoi = $_POST['ckmoi'];
     $sql = "UPDATE san_pham SET gia = $giamoi WHERE id = '$id';";
+    $sql1 = "INSERT INTO sale (id, chietkhau) VALUES ($id,$ckmoi) ON DUPLICATE KEY UPDATE chietkhau = $ckmoi;";
     $result = $conn->query($sql);
+    $result1 = $conn->query($sql1);
     if ($conn->query($sql) === TRUE) {
         header("Location:admin-productdetail.php?id=$id");
     } else {
@@ -42,7 +35,7 @@ if (isset($_POST['doigia'])) {
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header bg-primary">
-                            <span class="text-white fs-3">Thông tin Sản phẩm</span>
+                            <span class="text-white fs-3">Thông tin Sản phẩm ID: <?=$data['id']?></span>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -55,9 +48,9 @@ if (isset($_POST['doigia'])) {
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
 
-                                            <form method="post" action="admin-productdetail.php?id=<?=$id?>">
+                                            <form method="post" action="admin-productdetail.php?id=<?= $id ?>">
                                                 <div class="text-danger">
-                                                    <label class="fs-3 fw-bold">Giá bán:  <?= number_format(tinhgia($id,$data['gia'],$conn)) ?>đ</label>
+                                                    <label class="fs-3 fw-bold">Giá bán: <?= number_format(tinhgia($id, $data['gia'], $conn)) ?>đ</label>
                                                 </div>
                                                 <br>
                                                 <div class="">
@@ -108,65 +101,75 @@ if (isset($_POST['doigia'])) {
 
                                 </div>
                                 <div class="col-md-12">
-                                    <h4>Thống kê</h4>
                                     <hr>
-                                    <table class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>Mã Đơn Hàng</th>
-                                                <th>Thành Tiền</th>
-                                                <th>Ngày</th>
-                                                <th>Trạng thái</th>
-                                                <th>Chi Tiết</th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $sql = "SELECT * FROM orders WHERE user_id = " . $_GET['id'];
-                                            $result = $conn->query($sql);
-                                            $count = 1;
-                                            if ($result->num_rows > 0) {
-                                                while ($item = $result->fetch_assoc()) {
-                                            ?>
+                                    <div class="p-4">
+                                        <h4>Thông tin chi tiết</h4>
+                                        <?php
+                                        $sql = "SELECT * FROM san_pham WHERE id = $id";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            $item = $result->fetch_assoc();
+                                        ?>
+                                            <table class="table table-light table-striped-columns border">
+                                                <tbody>
                                                     <tr>
-                                                        <td> <?= $count ?> </td>
-                                                        <td> <?= $item['ma_don_hang']; ?> </td>
-                                                        <td> <?= number_format($item['total'], 0, ',', '.') ?> đ </td>
-                                                        <td> <?= $item['time']; ?> </td>
-                                                        <td>
-                                                            <?php
-                                                            if ($item['status'] == 0) {
-                                                                echo "Đang xử lý";
-                                                            } else if ($item['status'] == 1) {
-                                                                echo "Thành công";
-                                                            } else if ($item['status'] == 2) {
-                                                                echo "Huỷ đơn hàng";
-                                                            }
-
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <a href="admin-ordersdetail.php?ma=<?= $item['ma_don_hang']; ?>" class="btn btn-primary">Xem Chi Tiết</a>
-                                                        </td>
+                                                        <td style="width: 20%;">Tên sản phẩm</td>
+                                                        <td> <?= $item['ten_san_pham'] ?> </td>
                                                     </tr>
-                                                <?php
-                                                    $count++;
-                                                }
-                                            } else {
-                                                ?>
-                                                <tr>
-                                                    <td colspan="5"> Bạn chưa đặt đơn hàng nào </td>
-                                                </tr>
-                                            <?php
-                                            }
+                                                    <tr>
+                                                        <td style="width: 20%;">Danh mục</td>
+                                                        <td> <?= $item['danh_muc'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Quy cách</td>
+                                                        <td> <?= $item['quy_cach'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Nhà sản xuất</td>
+                                                        <td> <?= $item['nha_san_xuat'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Nước sản xuất</td>
+                                                        <td> <?= $item['nuoc_san_xuat'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Thành phần</td>
+                                                        <td> <?= $item['thanh_phan'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Công dụng</td>
+                                                        <td> <?= $item['cong_dung'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Đối tượng sử dụng</td>
+                                                        <td> <?= $item['doi_tuong_su_dung'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Cách sử dụng</td>
+                                                        <td> <?= $item['cach_su_dung'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Thời hạn sử dụng</td>
+                                                        <td> <?= $item['thoi_han_su_dung'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Bảo quản</td>
+                                                        <td> <?= $item['bao_quan'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Lưu ý khi sử dụng</td>
+                                                        <td> <?= $item['luu_y_khi_su_dung'] ?> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;">Số đăng ký</td>
+                                                        <td> <?= $item['so_dang_ky'] ?> </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        <?php }
+                                        ?>
 
-                                            ?>
-
-                                        </tbody>
-                                    </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

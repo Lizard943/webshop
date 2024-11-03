@@ -1,8 +1,8 @@
 <?php include "header.php" ?>
 <div class="">
     <span class="fs-3">Đơn hàng chờ tiếp nhận</span>
-    <table class="table table-bordered table-striped">
-        <thead>
+    <table class="table table-bordered table-striped border-primary">
+        <thead >
             <tr>
                 <th>STT</th>
                 <th>Mã Đơn Hàng</th>
@@ -63,7 +63,7 @@
 </div>
 <div class="">
     <span class="fs-3">Đơn hàng đã giao</span>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped border-warning">
         <thead>
             <tr>
                 <th>STT</th>
@@ -125,7 +125,7 @@
 </div>
 <div class="">
     <span class="fs-3">Đơn hàng đã huỷ</span>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped border-danger">
         <thead>
             <tr>
                 <th>STT</th>

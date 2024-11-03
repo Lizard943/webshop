@@ -14,8 +14,7 @@
                 $sql = "INSERT INTO `tbl_user`(`name`, `username`, `sdt`, `address`, `password`,`role`) VALUES ('$name','$username','$sdt','$address','$pass',0)";
                 $result=mysqli_query($conn,$sql);
                 if($result){ 
-                    header('location:loginindex.php');
-                    echo"<script>alert('New User Register Success');</script>";   
+                    header('location:loginindex.php');   
                 }
                 else{
                     die(mysqli_error($conn)) ;

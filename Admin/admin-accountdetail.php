@@ -41,19 +41,24 @@ if (isset($_GET['id'])) {
                                                 <?= $data['username'] ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mb-3">
+                                        <div class="col-md-4 mb-3">
                                             <label class="fw-bold">SĐT</label>
                                             <div class="border p-1">
                                                 <?= $data['sdt'] ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mb-3">
+                                        <div class="col-md-4 mb-3">
                                             <label class="fw-bold">Địa Chỉ</label>
                                             <div class="border p-1">
                                                 <?= $data['address'] ?>
                                             </div>
                                         </div>
-
+                                        <div class="col-md-4 mb-3">
+                                            <label class="fw-bold">Role</label>
+                                            <div class="border p-1">
+                                                <?= $data['role']==1? "Admin":"Khách hàng"?>
+                                            </div>
+                                        </div>
 
                                     </div>
 

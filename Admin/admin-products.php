@@ -1,14 +1,16 @@
 <?php include "header.php"; ?>
 <div class="">
     <span class="fs-3">Danh sách sản phẩm</span>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped border-dark">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Ảnh</th>
                 <th>Tên</th>
                 <th>Danh mục</th>
-                <th>Giá</th>
+                <th>Giá gốc</th>
+                <th>Chiết khấu</th>
+                <th>Giá bán</th>
                 <th>Chi tiết</th>
             </tr>
         </thead>
@@ -25,9 +27,10 @@
                         <td style="width: 500px; word-wrap: break-word;"> <?= $item['ten_san_pham']; ?> </td>
                         <td> <?= $item['danh_muc']; ?> </td>
                         <td> <?= number_format($item['gia']); ?>đ </td>
+                        <td> <?=onsale($item['id'],$conn)?>%</td>
+                        <td> <?= number_format(tinhgia($item['id'],$item['gia'],$conn)); ?>đ </td>
                         <td>
                             <a href="admin-productdetail.php?id=<?= $item['id']; ?>" class="btn btn-primary">Xem Chi Tiết</a>
-                            <a href="admin-productdetail.php?id=<?= $item['id']; ?>" class="btn btn-danger">Xoá</a>
                         </td>
                     </tr>
                 <?php
