@@ -28,7 +28,7 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php">Cart</a>
+                        <a class="nav-link" href="cart.php">Giỏ hàng</a>
                     </li>
                     <li class="nav-item">
                         <?php 
@@ -41,10 +41,10 @@
                     <li class="nav-item">
                         <?php 
                             if (!isset($_SESSION['name'])){ ?>
-                                <a class="nav-link" href="loginindex.php">Login</a>
+                                <a class="nav-link" href="loginindex.php">Đăng nhập</a>
                             <?php } 
                                 else { ?>
-                                    <a class="nav-link" href="logout.php">Log out</a>
+                                    <a class="nav-link" href="logout.php">Đăng xuất</a>
                                 <?php }
                             ?>
                     </li>

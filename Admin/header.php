@@ -8,7 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin</title>
+    <link rel="icon" href="../img/user-gear.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -25,7 +26,7 @@
                 <hr class="d-flex flex-column text-white">
                 <ul class="nav flex-column fs-5" >
                     <li class="nav-item">
-                        <a href="..\Admin\index.php" class="nav-link text-white" aria-current="page">
+                        <a href="..\Admin" class="nav-link text-white" aria-current="page">
                             <i class="bi bi-house-door-fill"></i>
                             <span class="ms-2">Trang chủ</span>
                         </a>
@@ -65,7 +66,7 @@
                                 <div class="col-auto">
                                     <?=$_SESSION['admin']?>
                                 </div>
-                                <div class="col-auto"><a href="../loginindex.php">Đăng xuất</a></div>
+                                <div class="col-auto"><a href="../logout.php">Đăng xuất</a></div>
                             </div>
                         </div>
                         

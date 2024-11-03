@@ -24,7 +24,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Giỏ hàng</title>
+    <link rel="icon" href="img/medical.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -34,8 +35,8 @@
         <div class="container">
             <a href="index.php"><img src="img/images.png" height="40" class="me-5"></a>
             <form class="d-flex" action="list.php">
-                <input id="search" name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> 
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <input id="search" name="search" class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search"> 
+                <button class="btn btn-outline-light" type="submit">Tìm</button>
             </form>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,7 +47,7 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php">Cart</a>
+                        <a class="nav-link" href="cart.php">Giỏ hàng</a>
                     </li>
                     <li class="nav-item">
                         <?php 
@@ -59,10 +60,10 @@
                     <li class="nav-item">
                         <?php 
                             if (!isset($_SESSION['name'])){ ?>
-                                <a class="nav-link" href="loginindex.php">Login</a>
+                                <a class="nav-link" href="loginindex.php">Đăng nhập</a>
                             <?php } 
                                 else { ?>
-                                    <a class="nav-link" href="logout.php">Log out</a>
+                                    <a class="nav-link" href="logout.php">Đăng xuất</a>
                                 <?php }
                             ?>
                     </li>
@@ -72,6 +73,12 @@
     </nav>
     <section class="cartt">
         <div class="container-fluid" style="margin-top:20px">
+            <?php if (!isset($_SESSION['name'])) { ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong> Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng  </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php } ?>
             <div class="row mx-5">
                 <div class="col-9">
                     <div class="shopping-cart">
@@ -140,7 +147,10 @@
                                     <div class="col-4">
                                         <p><strong><?=number_format($sum)?>đ</strong></p>
                                     </div>
-                                    <a class="btn btn-primary" href="checkout.php">Xác nhận</a>
+                                    <?php if (isset($_SESSION['name']) && !empty($_SESSION['cart'])) { ?>
+                                        <a class="btn btn-primary" href="checkout.php">Xác nhận</a>
+                                    <?php }?>
+                                    
                                 </div>
                             </div>
                         </form>

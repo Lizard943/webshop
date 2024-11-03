@@ -1,7 +1,7 @@
 <?php include "header.php" ?>
 <div class="">
     <span class="fs-3">Góp ý</span>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped border-dark">
         <thead>
             <tr>
                 <th>UserID</th>
@@ -10,7 +10,7 @@
                 <th>SĐT</th>
                 <th>Tiêu đề</th>
                 <th>Lời góp ý</th>
-                <th>Chi tiết</th>
+                <th>Ngày gửi</th>
             </tr>
         </thead>
         <tbody>

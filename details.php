@@ -35,13 +35,24 @@
             $_SESSION['cart'][] = $_sestion_array;
         } 
     }
+    function title($conn){
+        if (isset($_SESSION['detail'])){
+            $choose = $_SESSION['detail'];
+            $sql = "SELECT * FROM san_pham WHERE id = $choose";
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            return $row['ten_san_pham'];
+        }
+        return "Sản phẩm";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?=title($conn)?></title>
+    <link rel="icon" href="img/medical.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
