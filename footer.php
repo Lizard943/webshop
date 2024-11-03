@@ -1,5 +1,5 @@
 <footer id="footer" class="footer">
-    <div class="container">
+    <div class="container py-2">
         <div class="row">
             <div class="col-sm-12 col-md-5">
                 <h5>Học sinh thực hiện</h5>
