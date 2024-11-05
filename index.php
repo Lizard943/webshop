@@ -69,13 +69,13 @@ if (isset($_POST['gui'])) {
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="img/banner4.png">
+                    <img src="img/banner11.png">
                 </div>
                 <div class="col-md-4">
-                    <img src="img/banner4.png">
+                    <img src="img/banner12.jpg">
                 </div>
                 <div class="col-md-4">
-                    <img src="img/banner4.png">
+                    <img src="img/banner13.jpg">
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@ if (isset($_POST['gui'])) {
                 } ?>
 
             </div>
-            <img src="img/sub_banner_d327142f93.png" style="margin-top:20px;width:inherit">
+            <img src="img/Banner_Title_4188935dd8.png" style="margin-top:20px;width:inherit">
         </div>
     </div>
 
@@ -206,7 +206,7 @@ if (isset($_POST['gui'])) {
                 } ?>
 
             </div>
-            <img src="img/sub_banner_d327142f93.png" style="margin-top:20px;width:inherit">
+            
         </div>
     </div>
 

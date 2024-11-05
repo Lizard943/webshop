@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 02, 2024 lúc 04:16 PM
+-- Thời gian đã tạo: Th10 03, 2024 lúc 09:19 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -29,21 +29,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
-  `ten` varchar(50) NOT NULL,
-  `sdt` varchar(15) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `ngay_gui` datetime NOT NULL,
+  `userid` int(3) NOT NULL,
+  `ngay_gui` varchar(20) NOT NULL,
   `tieude` varchar(50) NOT NULL,
-  `gopy` varchar(300) NOT NULL
+  `gopy` varchar(300) NOT NULL,
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `feedback`
 --
 
-INSERT INTO `feedback` (`id`, `ten`, `sdt`, `email`, `ngay_gui`, `tieude`, `gopy`) VALUES
-(3, 'Trịnh Thế Hưng', '324324', 'vuliz943@gmail.com', '0000-00-00 00:00:00', '', 'tesst'),
-(4, 'Trịnh Thế Hưng', '324324', 'vuliz943@gmail.com', '2024-11-01 11:02:21', '', 'dddd');
+INSERT INTO `feedback` (`id`, `userid`, `ngay_gui`, `tieude`, `gopy`, `status`) VALUES
+(8, 16, '22:31 02/11/2024', 'te', 'te', 0),
+(9, 16, '22:54 02/11/2024', 'test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 0),
+(10, 16, '22:54 02/11/2024', 'Lorem ipsum dolor sit amet, consectetur adipiscing', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 0);
 
 -- --------------------------------------------------------
 
@@ -131,7 +131,7 @@ CREATE TABLE `orders` (
   `comment` varchar(300) NOT NULL,
   `total` int(9) NOT NULL,
   `status` int(1) NOT NULL,
-  `time` datetime NOT NULL
+  `time` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
@@ -139,11 +139,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `ma_don_hang`, `user_id`, `name`, `email`, `sdt`, `address`, `comment`, `total`, `status`, `time`) VALUES
-(1, 'DH17300396009848', 21, 'Vũ Thành Luân', 'vu1thanhluan1@gmail.com', '0977472201', '09', 'd', 1108050, 0, '2024-10-27 15:33:20'),
-(2, 'DH17300397105711', 13, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', 'd', 584250, 0, '2024-10-27 15:35:10'),
-(3, 'DH17300405798099', 13, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', 'd', 993200, 1, '2024-10-27 15:49:39'),
-(7, 'DH17300419314896', 13, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', 'd', 993200, 1, '2024-10-27 16:12:11'),
-(8, 'DH17304359937725', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', 'd', 874000, 2, '2024-11-01 05:39:53');
+(13, 'DH17306065037335', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 396000, 2, '11:01 03/11/2024'),
+(14, 'DH17306069889033', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 792000, 0, '11:09 03/11/2024'),
+(15, 'DH17306073676399', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 489250, 0, '11:16 03/11/2024');
 
 -- --------------------------------------------------------
 
@@ -164,9 +162,9 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `id_san_pham`, `sl`, `gia`) VALUES
-(1, 7, 14, 3, 111300),
-(2, 7, 6, 2, 329650),
-(3, 8, 3, 1, 874000);
+(9, 13, 1, 1, 396000),
+(10, 14, 1, 2, 396000),
+(11, 15, 26, 1, 489250);
 
 -- --------------------------------------------------------
 
@@ -184,7 +182,8 @@ CREATE TABLE `sale` (
 --
 
 INSERT INTO `sale` (`id`, `chietkhau`) VALUES
-(1, 30),
+(1, 20),
+(2, 4),
 (4, 30),
 (14, 30),
 (18, 30),
@@ -294,9 +293,6 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `name`, `username`, `sdt`, `address`, `password`, `role`) VALUES
-(11, 'lizz', 'liz@gmail.com', '', '', 'e9d34fc53c27836a28b24433ceef3b8f', 0),
-(12, 'luanvu943', 'luanvu@gmail.com', '', '', 'e9d34fc53c27836a28b24433ceef3b8f', 0),
-(13, 'mạnh', 'manh@gmail.com', '', '', 'luanvu943', 0),
 (16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '123456', 0),
 (22, 'Vũ Thành Luân', 'vuliz@gmail.com', '0977472201', '09', '123456', 1);
 
@@ -332,7 +328,8 @@ ALTER TABLE `orders`
 -- Chỉ mục cho bảng `order_items`
 --
 ALTER TABLE `order_items`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Chỉ mục cho bảng `sale`
@@ -360,7 +357,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `muclon`
@@ -372,13 +369,13 @@ ALTER TABLE `muclon`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `san_pham`
@@ -401,6 +398,12 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `muc`
   ADD CONSTRAINT `muc_ibfk_1` FOREIGN KEY (`id`) REFERENCES `muclon` (`id`);
+
+--
+-- Các ràng buộc cho bảng `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

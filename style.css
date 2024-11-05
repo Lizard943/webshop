@@ -80,7 +80,8 @@ nav {
 
 .feature-categories img{
     width: 400px;
-    border-radius: 50px;
+    height: 250px;
+    border-radius: 20px;
     box-shadow: 0 0 10px;
 }
 /*------------------góp ý-------------------*/
@@ -96,7 +97,7 @@ nav {
 /*--------------footer----------------------*/
 .footer{
     padding-top: 50px;
-    margin-top: 50px;
+    margin-top: 0px;
     background: rgb(48, 48, 48);
     color: #fff;
     font-size: 18px;
@@ -138,5 +139,4 @@ nav {
 #ds ul li {    
     margin: 10px 0;
 }
-
 

@@ -53,7 +53,7 @@
         <div class="container">
             <h6 class="text-white">
                 <a href="index.php" class="text-white">Trang Chủ/</a>
-                <a href="checkout.php" class="text-white">Thanh Toán</a>
+                <a href="checkout.php" class="text-white">Xác nhận</a>
             </h6>
         </div>
     </div>

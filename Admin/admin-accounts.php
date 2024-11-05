@@ -1,6 +1,17 @@
 <?php include "header.php" ?>
 <div class="">
-    <span class="fs-3">Danh sách tài khoản</span>
+    <div class="row justify-contents-between">
+        <div class="col">
+            <span class="fs-3">Danh sách tài khoản</span>
+        </div>
+        <div class="col-auto">
+            <form method="post" action="admin-products.php">
+                
+                <input type="text" name="product-name"></input>
+                <input type="submit" name="product-search" value="Tìm"></input>
+            </form>
+        </div>
+    </div>
     <table class="table table-bordered table-striped border-dark">
         <thead>
             <tr>
@@ -25,8 +36,9 @@
                         <td> <?= $item['username']; ?> </td>
                         <td> <?= $item['sdt']; ?> </td>
                         <td> <?= $item['role']==1? "Admin":"Khách hàng" ?> </td>
-                        <td>
+                        <td width="200px">
                             <a href="admin-accountdetail.php?id=<?= $item['id']; ?>" class="btn btn-primary">Xem Chi Tiết</a>
+                            <a href="admin-accountdetail.php?id=<?= $item['id']; ?>" class="btn btn-danger">Xoá</a>
                         </td>
                     </tr>
                 <?php
