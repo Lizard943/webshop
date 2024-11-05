@@ -4,9 +4,9 @@
             <div class="col-sm-12 col-md-5">
                 <h5>Học sinh thực hiện</h5>
                 <ul class="footer-links">
-                    <li><a href="http://scanfcode.com/category/c-language/">MSV: 21103100306 - Vũ Thành Luân - 09/04/2003</a></li>
-                    <li><a href="http://scanfcode.com/category/front-end-development/">Nguyễn Hữu Hoàng</a></li>
-                    <li><a href="http://scanfcode.com/category/back-end-development/">Bùi Đức Mạnh</a></li>
+                    <li>MSV: 21103100306 - Vũ Thành Luân - 09/04/2003</li>
+                    <li>MSV: 21103100320 - Nguyễn Hữu Hoàng - 26/11/2003</li>
+                    <li>MSV: 21103100310 - Bùi Đức Mạnh - 10/05/2003</li>
                     
                 </ul>
             </div>
@@ -23,6 +23,7 @@
                     <li><a href="#recommended">Đề xuất</a></li>
                     <li><a href="#on-sale">Giảm giá</a></li>
                     <li><a href="#best-seller">Bán chạy</a></li>
+                    <li><a href="list.php">Sản phẩm</a></li>
                 </ul>
             </div>
         </div>

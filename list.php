@@ -39,14 +39,6 @@
 </head>
 <body>
     <?php include 'navbar.php'?>
-    
-    <div class="thongke">
-        <div class="container mt-3">
-            <div class="tk">
-                <h5></h5>
-            </div>
-        </div>
-    </div>
 
     <section id="ds">
         <div class="container mt-3">

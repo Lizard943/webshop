@@ -1,6 +1,23 @@
 <?php include "header.php"; ?>
+<?php 
+    $_SESSION['sql'] = 'SELECT * FROM san_pham';
+    if (isset($_POST['product-search'])){
+        $_SESSION['sql'] = 'SELECT * FROM san_pham WHERE ten_san_pham LIKE \'%'.$_POST['product-name'].'%\' ';
+    }
+?>
 <div class="">
-    <span class="fs-3">Danh sách sản phẩm</span>
+    <div class="row justify-contents-between">
+        <div class="col">
+            <span class="fs-3">Danh sách sản phẩm</span>
+        </div>
+        <div class="col-auto">
+            <form method="post" action="admin-products.php">
+                <input type="text" name="product-name"></input>
+                <input type="submit" name="product-search" value="Tìm"></input>
+            </form>
+        </div>
+    </div>
+    
     <table class="table table-bordered table-striped border-dark">
         <thead>
             <tr>
@@ -16,7 +33,7 @@
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM san_pham ";
+            $sql = $_SESSION['sql'];
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($item = $result->fetch_assoc()) {
@@ -31,6 +48,7 @@
                         <td> <?= number_format(tinhgia($item['id'],$item['gia'],$conn)); ?>đ </td>
                         <td>
                             <a href="admin-productdetail.php?id=<?= $item['id']; ?>" class="btn btn-primary">Xem Chi Tiết</a>
+                            <a href="admin-productdetail.php?id=<?= $item['id']; ?>" class="btn btn-danger">Xoá</a>
                         </td>
                     </tr>
                 <?php

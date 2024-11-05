@@ -44,17 +44,17 @@
               </div>
                 <div class="col-md-7 col-lg-5 col-xl-5">
                   <form action="loginindex.php" method="post">
-                    <p class="text-center h1 fw-bold mb-4 mt-3">Login </p>
+                    <p class="text-center h1 fw-bold mb-4 mt-3">Đăng nhập</p>
                     
                     <div class="form-outline mb-4">
-                      <label class="form-label"> <i class="bi bi-person-circle"></i>Tài khoản</label>
+                      <label class="form-label"> <i class="bi bi-person-circle"></i> Tài khoản</label>
                       <input type="email" class="form-control form-control-lg py-3" name="username" autocomplete="off" placeholder="Nhập email" style="border-radius:25px ;" >
 
                     </div>
 
                     
                     <div class="form-outline mb-4">
-                      <label class="form-label"><i class="bi bi-chat-left-dots-fill"></i>Mật khẩu</label>
+                      <label class="form-label"><i class="bi bi-chat-left-dots-fill"></i> Mật khẩu</label>
                       <input type="password" class="form-control form-control-lg py-3" name="password" autocomplete="off" placeholder="Nhập mật khẩu" style="border-radius:25px ;" >
 
                     </div>
