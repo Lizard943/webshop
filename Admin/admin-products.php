@@ -47,24 +47,24 @@
         <div class="col-auto">
             <form method="post" action="admin-products.php">
                 <label>Tìm theo tên</label>
-                <input type="text" name="product-textbox" ></input>
+                <input type="text" name="product-textbox" value="<?php if(isset($_POST['product-textbox'])) echo $_POST['product-textbox'];?>"></input>
                 <label>Phân loại</label>
                 <select name="product-filter" style="padding: 2px 0;">
-                    <option value="0"></option>
-                    <option value="1">Hỗ trợ điều trị</option>
-                    <option value="2">Hỗ trợ tiêu hoá</option>
-                    <option value="3">Hỗ trợ làm đẹp</option>
-                    <option value="4">Sinh lý - Nội tiết tố</option>
-                    <option value="5">Vitamin - Khoáng chất</option>
-                    <option value="6">Thần kinh não</option>
-                    <option value="7">Sức khoẻ tim mạch</option>
-                    <option value="8">Dinh dưỡng</option>
+                    <option value="0" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==0) echo "selected";?>></option>
+                    <option value="1" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==1) echo "selected";?>>Hỗ trợ điều trị</option>
+                    <option value="2" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==2) echo "selected";?>>Hỗ trợ tiêu hoá</option>
+                    <option value="3" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==3) echo "selected";?>>Hỗ trợ làm đẹp</option>
+                    <option value="4" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==4) echo "selected";?>>Sinh lý - Nội tiết tố</option>
+                    <option value="5" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==5) echo "selected";?>>Vitamin - Khoáng chất</option>
+                    <option value="6" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==6) echo "selected";?>>Thần kinh não</option>
+                    <option value="7" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==7) echo "selected";?>>Sức khoẻ tim mạch</option>
+                    <option value="8" <?php if(isset($_POST['product-filter']) && $_POST['product-filter']==8) echo "selected";?>>Dinh dưỡng</option>
                 </select>
                 <label>Giá</label>
                 <select name="price-filter" style="padding: 2px 0;">
-                    <option value="0"></option>
-                    <option value="1">Tăng dần</option>
-                    <option value="2">Giảm dần</option>   
+                    <option value="0" <?php if(isset($_POST['price-filter']) && $_POST['price-filter']==0) echo "selected";?>></option>
+                    <option value="1" <?php if(isset($_POST['price-filter']) && $_POST['price-filter']==1) echo "selected";?>>Tăng dần</option>
+                    <option value="2" <?php if(isset($_POST['price-filter']) && $_POST['price-filter']==2) echo "selected";?>>Giảm dần</option>   
                 </select>
                 <input type="submit" name="product-search" value="Tìm"></input>
             </form>

@@ -81,7 +81,7 @@ if (isset($_GET['id'])) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = "SELECT * FROM orders WHERE user_id = ".$_GET['id'];
+                                            $sql = "SELECT * FROM orders WHERE user_id = ".$_GET['id']." ORDER BY id DESC";
                                             $result = $conn->query($sql);
                                             $count = 1;
                                             if ($result->num_rows > 0) {

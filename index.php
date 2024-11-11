@@ -43,7 +43,7 @@ if (isset($_POST['gui'])) {
                     <button type="button" data-bs-target="#slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div class="carousel-inner" style="border-radius:50px">
+                <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="img/banner1.jpg" class="d-block w-100" height="500px">
                     </div>
