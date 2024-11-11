@@ -40,7 +40,7 @@ if (isset($_POST['doigia'])) {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="<?= $data['img']; ?>" width="100%">
+                                    <img src="../img/<?= $data['img']; ?>" width="100%">
                                 </div>
                                 <div class="col-md-8">
                                     <h4><?= $data['ten_san_pham'] ?> </h4>

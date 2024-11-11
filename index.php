@@ -96,7 +96,7 @@ if (isset($_POST['gui'])) {
                         <div class="col-2 my-2">
                             <form class="card" style="width: 12rem;" method="post" action="index.php?id=<?= $row['id'] ?>">
                                 <a href="index.php?action=ct&id=<?= $row['id'] ?>">
-                                    <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
+                                    <img src="img/<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
                                 </a>
                                 <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                 <div class="card-body" style="height:14rem">
@@ -139,7 +139,7 @@ if (isset($_POST['gui'])) {
                             <form class="card" style="width: 12rem;" method="post" action="index.php?id=<?= $row['id'] ?>">
                                 <?= checksale($row['id'], $conn) ?>
                                 <a href="index.php?action=ct&id=<?= $row['id'] ?>" name="detail">
-                                    <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
+                                    <img src="img/<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
                                 </a>
                                 <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                 <div class="card-body" style="height:14rem">
@@ -184,7 +184,7 @@ if (isset($_POST['gui'])) {
                         <div class="col-2 my-2">
                             <form class="card" style="width: 12rem;" method="post" action="index.php?id=<?= $row['id'] ?>">
                                 <a href="index.php?action=ct&id=<?= $row['id'] ?>" name="detail">
-                                    <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
+                                    <img src="img/<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
                                 </a>
                                 <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                 <div class="card-body" style="height:14rem">

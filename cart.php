@@ -98,7 +98,7 @@
                                             <div class="border rounded my-3">
                                                 <div class="row align-items-center">
                                                     <div class="col col-md-2">
-                                                        <img src="<?=$item['img']?>" alt="anh" class="img-fluid p-4"/>
+                                                        <img src="img/<?=$item['img']?>" alt="anh" class="img-fluid p-4"/>
                                                     </div>
                                                     <div class="col col-md-4 pt-2">
                                                         <h5><?=$item['name']?></h5>

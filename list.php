@@ -79,7 +79,7 @@
                                                 
                                                 <a href="index.php?action=ct&id=<?= $row['id'] ?>" name="detail">
                                                     <?=checksale($row['id'],$conn)?>
-                                                    <img src="<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
+                                                    <img src="img/<?= $row["img"] ?>" class="card-img-top" style="width:10rem;display:flex;margin: 10px auto;">
                                                 </a>
                                                 <input type="hidden" name="img" value="<?= $row['img'] ?>">
                                                 <div class="card-body" style="height:12rem">

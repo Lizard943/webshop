@@ -5,6 +5,8 @@
         <thead >
             <tr>
                 <th>STT</th>
+                <th>Tên</th>
+                <th>SĐT</th>
                 <th>Mã Đơn Hàng</th>
                 <th>Thành Tiền</th>
                 <th>Ngày</th>
@@ -24,6 +26,8 @@
             ?>
                     <tr>
                         <td> <?= $count ?> </td>
+                        <td> <?= $item['name']; ?> </td>
+                        <td> <?= $item['sdt']; ?> </td>
                         <td> <?= $item['ma_don_hang']; ?> </td>
                         <td> <?= number_format($item['total'], 0, ',', '.') ?> đ </td>
                         <td> <?= $item['time']; ?> </td>
@@ -67,6 +71,8 @@
         <thead>
             <tr>
                 <th>STT</th>
+                <th>Tên</th>
+                <th>SĐT</th>
                 <th>Mã Đơn Hàng</th>
                 <th>Thành Tiền</th>
                 <th>Ngày</th>
@@ -86,6 +92,8 @@
             ?>
                     <tr>
                         <td> <?= $count ?> </td>
+                        <td> <?= $item['name']; ?> </td>
+                        <td> <?= $item['sdt']; ?> </td>
                         <td> <?= $item['ma_don_hang']; ?> </td>
                         <td> <?= number_format($item['total'], 0, ',', '.') ?> đ </td>
                         <td> <?= $item['time']; ?> </td>
@@ -129,6 +137,8 @@
         <thead>
             <tr>
                 <th>STT</th>
+                <th>Tên</th>
+                <th>SĐT</th>
                 <th>Mã Đơn Hàng</th>
                 <th>Thành Tiền</th>
                 <th>Ngày</th>
@@ -148,6 +158,8 @@
             ?>
                     <tr>
                         <td> <?= $count ?> </td>
+                        <td> <?= $item['name']; ?> </td>
+                        <td> <?= $item['sdt']; ?> </td>
                         <td> <?= $item['ma_don_hang']; ?> </td>
                         <td> <?= number_format($item['total'], 0, ',', '.') ?> đ </td>
                         <td> <?= $item['time']; ?> </td>

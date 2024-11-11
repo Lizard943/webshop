@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 03, 2024 lúc 09:19 AM
+-- Thời gian đã tạo: Th10 10, 2024 lúc 09:14 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `feedback` (
-  `id` int(11) NOT NULL,
+  `id` int(3) NOT NULL,
   `userid` int(3) NOT NULL,
   `ngay_gui` varchar(20) NOT NULL,
   `tieude` varchar(50) NOT NULL,
@@ -141,7 +141,9 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`id`, `ma_don_hang`, `user_id`, `name`, `email`, `sdt`, `address`, `comment`, `total`, `status`, `time`) VALUES
 (13, 'DH17306065037335', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 396000, 2, '11:01 03/11/2024'),
 (14, 'DH17306069889033', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 792000, 0, '11:09 03/11/2024'),
-(15, 'DH17306073676399', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 489250, 0, '11:16 03/11/2024');
+(15, 'DH17306073676399', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 489250, 0, '11:16 03/11/2024'),
+(16, 'DH17307052878200', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 1881000, 0, '14:28 04/11/2024'),
+(17, 'DH17307890937704', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', 'Thường Tín, Hà Nội', '', 1227400, 0, '13:44 05/11/2024');
 
 -- --------------------------------------------------------
 
@@ -164,7 +166,10 @@ CREATE TABLE `order_items` (
 INSERT INTO `order_items` (`id`, `order_id`, `id_san_pham`, `sl`, `gia`) VALUES
 (9, 13, 1, 1, 396000),
 (10, 14, 1, 2, 396000),
-(11, 15, 26, 1, 489250);
+(11, 15, 26, 1, 489250),
+(12, 16, 15, 2, 940500),
+(13, 17, 33, 1, 376200),
+(14, 17, 46, 2, 425600);
 
 -- --------------------------------------------------------
 
@@ -280,11 +285,11 @@ INSERT INTO `san_pham` (`id`, `ten_san_pham`, `gia`, `img`, `danh_muc`, `quy_cac
 
 CREATE TABLE `tbl_user` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `sdt` varchar(15) NOT NULL,
-  `address` varchar(150) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `sdt` varchar(10) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `password` varchar(30) NOT NULL,
   `role` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
@@ -293,7 +298,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `name`, `username`, `sdt`, `address`, `password`, `role`) VALUES
-(16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '123456', 0),
+(16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', 'Thường Tín , Hà Nội', '123456', 0),
 (22, 'Vũ Thành Luân', 'vuliz@gmail.com', '0977472201', '09', '123456', 1);
 
 --
@@ -357,7 +362,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `muclon`
@@ -369,13 +374,13 @@ ALTER TABLE `muclon`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `san_pham`

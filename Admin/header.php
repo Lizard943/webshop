@@ -20,7 +20,7 @@
     <div class="">
         <div class="row g-0">
             <div class="d-flex flex-column justify-content-start col-auto bg-dark min-vh-100 px-4 ">
-                <a class="text-white text-decoration-none d-flex flex-column align-items-center ms-2 mt-2" role="button">
+                <a class="text-white text-decoration-none d-flex flex-column align-items-center ms-2 mt-2" href="index.php" role="button">
                     <span class="fs-4">Admin</span>
                 </a>
                 <hr class="d-flex flex-column text-white">
