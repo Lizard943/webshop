@@ -88,7 +88,7 @@
                                 while ($row = $result->fetch_assoc()){?>
                                 <div class="col-lg-5">
                                     <?=checksale($row['id'],$conn)?>
-                                    <img src="<?=$row['img']?>" style="width: 30rem;display:flex;margin: 10px auto;">
+                                    <img src="img/<?=$row['img']?>" style="width: 30rem;display:flex;margin: 10px auto;">
                                 </div>
                                 
                                 <form class="col-lg-7 mt-2" method="post">

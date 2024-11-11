@@ -1,14 +1,32 @@
 <?php include "header.php" ?>
+<?php
+    $sql1 = "SELECT * FROM tbl_user";
+    if (isset($_POST['account-search'])){
+        if ($_POST['account-filter']==1){
+            $sql1 = 'SELECT * FROM tbl_user WHERE name LIKE \'%'.$_POST['account-textbox'].'%\' ';
+        }
+        else if ($_POST['account-filter']==2){
+            $sql1 = 'SELECT * FROM tbl_user WHERE sdt LIKE \'%'.$_POST['account-textbox'].'%\' ';
+        }
+        else if ($_POST['account-filter']==3){
+            $sql1 = 'SELECT * FROM tbl_user WHERE email LIKE \'%'.$_POST['account-textbox'].'%\' ';
+        }  
+    }
+?>
 <div class="">
     <div class="row justify-contents-between">
         <div class="col">
             <span class="fs-3">Danh sách tài khoản</span>
         </div>
         <div class="col-auto">
-            <form method="post" action="admin-products.php">
-                
-                <input type="text" name="product-name"></input>
-                <input type="submit" name="product-search" value="Tìm"></input>
+            <form method="post" action="admin-accounts.php">
+                <select name="account-filter">
+                    <option value="1">Tìm theo tên</option>
+                    <option value="2">Tìm theo SĐT</option>
+                    <option value="3">Tìm theo Email</option>
+                </select>
+                <input type="text" name="account-textbox"></input>
+                <input type="submit" name="account-search" value="Tìm"></input>
             </form>
         </div>
     </div>
@@ -25,7 +43,7 @@
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM tbl_user ";
+            $sql = $sql1;
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($item = $result->fetch_assoc()) {
@@ -47,7 +65,7 @@
             } else {
                 ?>
                 <tr>
-                    <td colspan="5"> Bạn chưa đặt đơn hàng nào </td>
+                    <td colspan="5"> Không có dữ liệu </td>
                 </tr>
             <?php
             }

@@ -95,7 +95,7 @@
                                         <div class="ps-4 pt-2 border">
                                             <div class="row mb-3 align-items-center"> 
                                                 <div class="col-md-2 "> 
-                                                    <img src="<?=$item['img']?>" alt="" width="60px" > 
+                                                    <img src="img/<?=$item['img']?>" alt="" width="60px" > 
                                                 </div>
                                                 <div class="col-md-5">
                                                     <label><?=$item['name']?></label></label>

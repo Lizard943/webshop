@@ -140,7 +140,7 @@
                                                 ?>
                                                 <tr>
                                                     <td class="align-middle">
-                                                        <img src="<?= $item['img']; ?>" width="50px" height="50px" alt="<?= $item['name']; ?>">
+                                                        <img src="img/<?= $item['img']; ?>" width="50px" height="50px" alt="<?= $item['name']; ?>">
                                                         <?= $item['name']; ?>
                                                     </td>
                                                     <td class="align-middle">

@@ -67,7 +67,7 @@
             ?>
                     <tr>
                         <td> <?= $item['id'] ?> </td>
-                        <td> <img src="<?= $item['img']; ?>" width="50px" height="50px"> </td>
+                        <td> <img src="../img/<?= $item['img'] ?>" width="50px" height="50px"> </td>
                         <td> <?= $item['ten_san_pham'] ?></td>
                         <td> <?= $item['soluong']; ?> </td>
                         <td> <?= number_format($item['tong']) ?>đ</td>
