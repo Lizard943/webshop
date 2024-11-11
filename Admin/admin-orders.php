@@ -1,6 +1,44 @@
 <?php include "header.php" ?>
+<?php 
+    $sqlfilter = "";
+    $sqlstatus = "";
+    if (isset($_POST['order-search'])){
+        if ($_POST['order-filter']==1){
+            $sqlfilter = 'and name LIKE \'%'.$_POST['order-textbox'].'%\'';
+        }
+        else if ($_POST['order-filter']==2){
+            $sqlfilter = 'and ma_don_hang LIKE \'%'.$_POST['order-textbox'].'%\'';
+        }
+        
+    }
+?>
 <div class="">
-    <span class="fs-3">Đơn hàng chờ tiếp nhận</span>
+    <div class="row justify-contents-between align-items-center">
+        <div class="col">
+            <span class="fs-3">Danh sách sản phẩm</span>
+        </div>
+        <div class="col-auto">
+            <form method="post" action="admin-orders.php">
+                <select name="order-filter" style="padding: 2px 0;">
+                    <option value="1" <?php if(isset($_POST['order-filter']) && $_POST['order-filter']==1) echo "selected";?> >Tìm theo tên</option>
+                    <option value="2" <?php if(isset($_POST['order-filter']) && $_POST['order-filter']==2) echo "selected";?> >Tìm theo mã đơn hàng</option>
+                </select>
+                <input type="text" name="order-textbox" value="<?php if(isset($_POST['order-textbox'])) echo $_POST['order-textbox'];?>"></input>
+                <label>Trạng thái</label>
+                <select name="order-status" style="padding: 2px 0;">
+                    <option value="0" <?php if(isset($_POST['order-status']) && $_POST['order-status']==0) echo "selected";?>>Tất cả</option>
+                    <option value="1" <?php if(isset($_POST['order-status']) && $_POST['order-status']==1) echo "selected";?>>Chờ xử lý</option>
+                    <option value="2" <?php if(isset($_POST['order-status']) && $_POST['order-status']==2) echo "selected";?>>Thành công</option>
+                    <option value="3" <?php if(isset($_POST['order-status']) && $_POST['order-status']==3) echo "selected";?>>Huỷ đơn hàng</option>
+                </select>
+                <input type="submit" name="order-search" value="Tìm"></input>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<?php if (!isset($_POST['order-status']) || $_POST['order-status']==1  || $_POST['order-status']==0){ ?>
+<div class=""> 
     <table class="table table-bordered table-striped border-primary">
         <thead >
             <tr>
@@ -12,13 +50,11 @@
                 <th>Ngày</th>
                 <th>Trạng thái</th>
                 <th>Chi Tiết</th>
-
-
             </tr>
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM orders WHERE status = 0 ORDER BY id DESC";
+            $sql = "SELECT * FROM orders WHERE status = 0 ".$sqlfilter." ORDER BY id DESC";
             $result = $conn->query($sql);
             $count = 1;
             if ($result->num_rows > 0) {
@@ -55,18 +91,19 @@
             } else {
                 ?>
                 <tr>
-                    <td colspan="6"> Không có đơn hàng nào </td>
+                    <td colspan="8"> Không có đơn hàng nào </td>
                 </tr>
             <?php
             }
-
+            
             ?>
 
         </tbody>
     </table>
 </div>
+<?php } ?>
+<?php if (!isset($_POST['order-status']) || $_POST['order-status']==2  || $_POST['order-status']==0){ ?>
 <div class="">
-    <span class="fs-3">Đơn hàng đã giao</span>
     <table class="table table-bordered table-striped border-warning">
         <thead>
             <tr>
@@ -84,7 +121,8 @@
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM orders WHERE status = 1 ORDER BY id DESC";
+            
+            $sql = "SELECT * FROM orders WHERE status = 1 ".$sqlfilter." ORDER BY id DESC";
             $result = $conn->query($sql);
             $count = 1;
             if ($result->num_rows > 0) {
@@ -121,18 +159,19 @@
             } else {
                 ?>
                 <tr>
-                    <td colspan="6"> Không có đơn hàng nào </td>
+                    <td colspan="8"> Không có đơn hàng nào </td>
                 </tr>
             <?php
             }
-
+            
             ?>
 
         </tbody>
     </table>
 </div>
+<?php } ?>
+<?php if (!isset($_POST['order-status']) || $_POST['order-status']==3 || $_POST['order-status']==0){ ?>
 <div class="">
-    <span class="fs-3">Đơn hàng đã huỷ</span>
     <table class="table table-bordered table-striped border-danger">
         <thead>
             <tr>
@@ -150,7 +189,8 @@
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM orders WHERE status = 2 ORDER BY id DESC";
+            if (!isset($_POST['order-status']) || $_POST['order-status']==3 || $_POST['order-status']==0){
+            $sql = "SELECT * FROM orders WHERE status = 2 ".$sqlfilter." ORDER BY id DESC";
             $result = $conn->query($sql);
             $count = 1;
             if ($result->num_rows > 0) {
@@ -187,14 +227,15 @@
             } else {
                 ?>
                 <tr>
-                    <td colspan="6"> Không có đơn hàng nào </td>
+                    <td colspan="8"> Không có đơn hàng nào </td>
                 </tr>
             <?php
             }
-
+        }
             ?>
 
         </tbody>
     </table>
 </div>
+<?php } ?>
 <?php include "footer.php" ?>

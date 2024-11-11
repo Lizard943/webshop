@@ -1,6 +1,7 @@
 <?php
     require_once 'component\database.php';
     session_start();
+    require_once 'auth.php';
     if(isset($_GET['ma'])){
         $ma = $_GET['ma'];
         $sql = "SELECT * FROM orders WHERE ma_don_hang = '$ma'";
@@ -59,7 +60,7 @@
                                 <a class="nav-link" href="loginindex.php">Login</a>
                             <?php } 
                                 else { ?>
-                                    <a class="nav-link" href="logout.php">Log out</a>
+                                    <a class="nav-link" href="logout.php">Đăng xuất</a>
                                 <?php }
                             ?>
                     </li>

@@ -9,7 +9,7 @@
             $sql1 = 'SELECT * FROM tbl_user WHERE sdt LIKE \'%'.$_POST['account-textbox'].'%\' ';
         }
         else if ($_POST['account-filter']==3){
-            $sql1 = 'SELECT * FROM tbl_user WHERE email LIKE \'%'.$_POST['account-textbox'].'%\' ';
+            $sql1 = 'SELECT * FROM tbl_user WHERE username LIKE \'%'.$_POST['account-textbox'].'%\' ';
         }  
     }
 ?>
@@ -20,10 +20,10 @@
         </div>
         <div class="col-auto">
             <form method="post" action="admin-accounts.php">
-                <select name="account-filter">
-                    <option value="1">Tìm theo tên</option>
-                    <option value="2">Tìm theo SĐT</option>
-                    <option value="3">Tìm theo Email</option>
+                <select name="account-filter" style="padding: 2px 0;">
+                    <option value="1" <?php if(isset($_POST['account-filter']) && $_POST['account-filter']==1) echo "selected";?>>Tìm theo tên</option>
+                    <option value="2" <?php if(isset($_POST['account-filter']) && $_POST['account-filter']==2) echo "selected";?>>Tìm theo SĐT</option>
+                    <option value="3" <?php if(isset($_POST['account-filter']) && $_POST['account-filter']==3) echo "selected";?>>Tìm theo Email</option>
                 </select>
                 <input type="text" name="account-textbox"></input>
                 <input type="submit" name="account-search" value="Tìm"></input>

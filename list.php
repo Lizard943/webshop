@@ -46,7 +46,7 @@
                 <form class="boloc col-auto" method="post" action="" style="width:300px">
                     <i class="fas fa-filter ms-1"></i>
                     <label class="ms-1"><strong>Bộ lọc nâng cao</strong></label>
-                    <input type="submit" name="">
+                    <input type="submit" name="" value="Lọc">
                     <hr>
                     <div class="gia">
                         <i class="fas fa-filter ms-1"></i>

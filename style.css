@@ -27,6 +27,7 @@ nav {
     width: 20%;
     float: left;
     background-color: #ddd;
+    border: 1px solid gray;
 }
 
 .side-menu .card{
@@ -55,7 +56,6 @@ nav {
 .slider { 
     width: 78%;
     margin-left: 21%;
-    border-radius: 50px;
     border: 1px solid gray;
 }
 
