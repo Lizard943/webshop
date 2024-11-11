@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 10, 2024 lúc 09:42 AM
+-- Thời gian đã tạo: Th10 11, 2024 lúc 04:46 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -52,6 +52,7 @@ INSERT INTO `feedback` (`id`, `userid`, `ngay_gui`, `tieude`, `gopy`, `status`) 
 --
 
 CREATE TABLE `muc` (
+  `stt` int(2) NOT NULL,
   `id` int(3) NOT NULL,
   `id_danh_muc` int(3) NOT NULL,
   `danh_muc` varchar(50) NOT NULL
@@ -61,33 +62,33 @@ CREATE TABLE `muc` (
 -- Đang đổ dữ liệu cho bảng `muc`
 --
 
-INSERT INTO `muc` (`id`, `id_danh_muc`, `danh_muc`) VALUES
-(1, 1, 'Thận, tiền liệt tuyến'),
-(1, 2, 'Cơ xương khớp'),
-(1, 3, 'Hô hấp, ho, xoang'),
-(2, 1, 'Vi sinh - Probiotic'),
-(2, 2, 'Dạ dày, tá tràng'),
-(2, 3, 'Táo bón'),
-(2, 4, 'Đại tràng'),
-(2, 5, 'Hỗ trợ tiêu hóa'),
-(2, 6, 'Khó tiêu'),
-(3, 1, 'Hỗ trợ làm đẹp'),
-(3, 2, 'Tóc'),
-(3, 3, 'Da'),
-(3, 4, 'Hỗ trợ giảm cân'),
-(4, 1, 'Sinh lý nam'),
-(4, 2, 'Sinh lý nữ'),
-(4, 3, 'Hỗ trợ mãn kinh'),
-(4, 4, 'Cân bằng nội tiết tố'),
-(5, 1, 'Vitamin & Khoáng chất'),
-(5, 2, 'Bổ sung Canxi & Vitamin D'),
-(6, 1, 'Bổ não - cải thiện trí nhớ'),
-(6, 2, 'Tuần hoàn máu'),
-(6, 3, 'Thần kinh não'),
-(6, 4, 'Hỗ trợ giấc ngủ ngon'),
-(7, 1, 'Sức khoẻ tim mạch'),
-(7, 2, 'Giảm Cholesterol'),
-(8, 1, 'Sữa');
+INSERT INTO `muc` (`stt`, `id`, `id_danh_muc`, `danh_muc`) VALUES
+(1, 1, 1, 'Thận, tiền liệt tuyến'),
+(2, 1, 2, 'Cơ xương khớp'),
+(3, 1, 3, 'Hô hấp, ho, xoang'),
+(4, 2, 1, 'Vi sinh - Probiotic'),
+(5, 2, 2, 'Dạ dày, tá tràng'),
+(6, 2, 3, 'Táo bón'),
+(7, 2, 4, 'Đại tràng'),
+(8, 2, 5, 'Hỗ trợ tiêu hóa'),
+(9, 2, 6, 'Khó tiêu'),
+(10, 3, 1, 'Hỗ trợ làm đẹp'),
+(11, 3, 2, 'Tóc'),
+(12, 3, 3, 'Da'),
+(13, 3, 4, 'Hỗ trợ giảm cân'),
+(14, 4, 1, 'Sinh lý nam'),
+(15, 4, 2, 'Sinh lý nữ'),
+(16, 4, 3, 'Hỗ trợ mãn kinh'),
+(17, 4, 4, 'Cân bằng nội tiết tố'),
+(18, 5, 1, 'Vitamin & Khoáng chất'),
+(19, 5, 2, 'Bổ sung Canxi & Vitamin D'),
+(20, 6, 1, 'Bổ não - cải thiện trí nhớ'),
+(21, 6, 2, 'Tuần hoàn máu'),
+(22, 6, 3, 'Thần kinh não'),
+(23, 6, 4, 'Hỗ trợ giấc ngủ ngon'),
+(24, 7, 1, 'Sức khoẻ tim mạch'),
+(25, 7, 2, 'Giảm Cholesterol'),
+(26, 8, 1, 'Sữa');
 
 -- --------------------------------------------------------
 
@@ -142,9 +143,10 @@ INSERT INTO `orders` (`id`, `ma_don_hang`, `user_id`, `name`, `email`, `sdt`, `a
 (13, 'DH17306065037335', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 396000, 2, '11:01 03/11/2024'),
 (14, 'DH17306069889033', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 792000, 0, '11:09 03/11/2024'),
 (15, 'DH17306073676399', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 489250, 0, '11:16 03/11/2024'),
-(16, 'DH17307052878200', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 1881000, 0, '14:28 04/11/2024'),
+(16, 'DH17307052878200', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', '09', '', 1881000, 1, '14:28 04/11/2024'),
 (17, 'DH17307890937704', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', 'Thường Tín, Hà Nội', '', 1227400, 0, '13:44 05/11/2024'),
-(18, 'DH17312275265726', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', 'Thường Tín , Hà Nội', '', 256500, 1, '15:32 10/11/2024');
+(18, 'DH17312275265726', 16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', 'Thường Tín , Hà Nội', '', 256500, 1, '15:32 10/11/2024'),
+(19, 'DH17313376972264', 23, 'Hoàng', 'hoang@gmail.com', '0123456789', 'Thái Bình', 'Giao buổi chiều', 1694800, 1, '22:08 11/11/2024');
 
 -- --------------------------------------------------------
 
@@ -171,7 +173,9 @@ INSERT INTO `order_items` (`id`, `order_id`, `id_san_pham`, `sl`, `gia`) VALUES
 (12, 16, 15, 2, 940500),
 (13, 17, 33, 1, 376200),
 (14, 17, 46, 2, 425600),
-(15, 18, 11, 1, 256500);
+(15, 18, 11, 1, 256500),
+(16, 19, 46, 2, 425600),
+(17, 19, 7, 3, 281200);
 
 -- --------------------------------------------------------
 
@@ -190,7 +194,7 @@ CREATE TABLE `sale` (
 
 INSERT INTO `sale` (`id`, `chietkhau`) VALUES
 (1, 20),
-(2, 4),
+(2, 20),
 (4, 30),
 (14, 30),
 (18, 30),
@@ -229,7 +233,6 @@ CREATE TABLE `san_pham` (
 INSERT INTO `san_pham` (`id`, `ten_san_pham`, `gia`, `img`, `danh_muc`, `quy_cach`, `nha_san_xuat`, `nuoc_san_xuat`, `thanh_phan`, `cong_dung`, `doi_tuong_su_dung`, `cach_su_dung`, `thoi_han_su_dung`, `bao_quan`, `luu_y_khi_su_dung`, `so_dang_ky`) VALUES
 (1, 'Viên uống Golex Ocavill hỗ trợ chống lại sự phình to của tuyến tiền liệt, cải thiện các rối loạn tiểu tiện (30 viên)', 495000, '1.png', 'Thận, tiền liệt tuyến', 'Hộp 30 Viên', 'THE OXFORD HEALTH COMPANY LTD', 'Anh', 'Chiết xuất Cây cọ lùn (Saw Palmetto), Hạt bí ngô, Tầm ma, Kẽm, Lycopene, Vitamin E, Vitamin B6', 'Golex hỗ trợ chống lại sự phình to của tuyến tiền liệt, cải thiện các rối loạn tiểu tiện ở bệnh nhân phì đại tiền liệt tuyến: Tiểu đêm, tiểu buốt, tiểu không hết, tiểu nhiều lần. Hạn chế sự phát triển của u xơ tiền liệt tuyến lành tính hoặc sử dụng để hỗ trợ sau phẫu thuật.', 'Golex dùng trong các trường hợp: Nam giới ở tuổi trung và cao niên, có các triệu chứng như rối loạn tiểu tiện như: Tiểu đêm, tiểu buốt, tiểu rắt, tiểu không hết, tiểu nhiều lần, tia nước tiểu yếu... Nam giới bị u xơ tiền liệt tuyến lành tính hoặc sử dụng để hỗ trợ sau phẫu thuật.', 'Uống 2 viên mỗi ngày, uống sau bữa ăn.', '24 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ không quá 30 độ C, tránh ánh sáng. Để xa tầm tay trẻ em.', 'Không dùng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Người đang dùng thuốc, phụ nữ mang thai hoặc cho con bú, hỏi ý kiến thầy thuốc trước khi dùng. Thực phẩm bảo vệ sức khỏe, không thể thay thế chế độ ăn uống đa dạng và cân bằng. Không dùng cho người dưới 18 tuổi.', '9471/2023/ĐKSP'),
 (2, 'Viên nhai Borne Mineral New Nordic hỗ trợ phát triển xương, giúp tăng chiều cao, tăng đề kháng (120 viên)', 635000, '2.jpg', 'Cơ xương khớp', 'Hộp 120 Viên', 'LEGOSAN AB', 'Thụy Điển', 'Canxi, Magie, Vitamin D3', 'Borne Mineral hỗ trợ sự phát triển của xương giúp tăng trưởng chiều cao, giảm nguy cơ còi xương thấp bé, phòng ngừa thiếu canxi ở trẻ em và hỗ trợ tăng cường sức đề kháng.', 'Borne Mineral dùng trong các trường hợp sau: Trẻ em từ 3 tuổi trở lên. Trẻ bị thiếu canxi. Còi xương. Chậm lớn. Trẻ ở tuổi dậy thì cần tăng chiều cao.', 'Nhai 2 viên mỗi ngày.', '18 tháng kể từ ngày ', 'Đậy kín sản phẩm, bảo quản nơi khô ráo, thoáng mát, tránh ánh sáng trực tiếp. Để xa tầm tay trẻ em.', 'Không dùng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Phụ nữ có thai và cho con bú, trẻ em dưới 3 tuổi phải tham khảo ý kiến của chuyên gia chăm sóc sức khỏe trước khi sử dụng. Không dùng cho người tiểu đường. Không dùng cho người tăng canxi huyết. Không dùng quá liều khuyến cáo. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '6120/2023/ĐKSP'),
-(3, 'Thực phẩm bảo vệ sức khỏe Calcium Premium JpanWell bổ sung canxi, giảm nguy cơ loãng xương (120 viên)', 920000, '3.jpg', 'Cơ xương khớp', 'Hộp 120 Viên', 'Have fun Factory Co., Ltd', 'Nhật Bản', 'Canxi từ vỏ sò, Chất xơ hòa tan, Vi khuẩn acid lactic, Magie, Sắt, Vitamin B2, Vitamin B1, Vitamin D3, Vitamin K2', 'Thực phẩm bảo vệ sức khỏe Calcium Premium bổ sung canxi, một số các vitamin (vitamin B1, vitamin B2, vitamin D3, vitamin K2) và khoáng chất (magie, sắt) cho cơ thể; hỗ trợ tăng khả năng hấp thụ canxi; hỗ trợ giảm nguy cơ loãng xương.', 'Thực phẩm bảo vệ sức khỏe Calcium Premium thích hợp dùng cho người trưởng thành.', 'Uống 2 - 4 viên/ngày với nước nguội hoặc nước ấm.', '3 năm kể từ ngày sản', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ không quá 30 độ C, tránh ánh sáng. Để xa tầm tay trẻ em.', 'Người đang điều trị bệnh, người đang dùng các loại thuốc, phụ nữ mang thai, phụ nữ cho con bú vui lòng tham khảo ý kiến chuyên gia trước khi sử dụng. Không sử dụng cho người mẫn cảm, kiêng kị với bất kỳ thành phần nào của sản phẩm. Không sử dụng cho đối tượng tăng canxi huyết, canxi niệu.', '6734/2023/ĐKSP'),
 (4, 'Viên uống Rama Bổ Phổi hỗ trợ bổ phổi, giảm ho (30 viên)', 132000, '4.jpg', 'Hô hấp, ho, xoang', 'Hộp 30 Viên', 'CÔNG TY TNHH CÔNG NGHỆ HERBITECH', 'Việt Nam', 'Cao hỗn hợp thảo mộc, Chiết xuất Mạch môn, chiết xuất cúc tím, Chiết xuất gừng, Chiết xuất xuyên tâm liên, Chiết xuất Trần bì, Chiết xuất Huyết giác, Chiết xuất Đông trùng hạ thảo, Vitamin C, Fucoidan 80%', 'Rama Bổ Phổi hỗ trợ bổ phổi, hỗ trợ giảm ho, giảm đờm, giảm đau rát họng, khản tiếng do viêm họng, viêm phế quản.', 'Rama Bổ Phổi thích hợp dùng cho trẻ em từ 6 tuổi trở lên và người lớn bị ho, ho có đờm, đau rát họng, khản tiếng do viêm họng, viêm phế quản.', 'Trẻ 6 - 12 tuổi: Uống 1 viên/lần x 1 lần/ngày. Trẻ trên 12 tuổi và người lớn: Uống 1 viên/lần x 2 - 3 lần/ngày. Uống sau ăn.', '36 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ không quá 30 độ C, tránh ánh sáng mặt trời trực tiếp. Để xa tầm tay trẻ em.', 'Không sử dụng cho người mẫn cảm với bất cứ thành phần nào của sản phẩm. Phụ nữ có thai, người đang dùng thuốc, điều trị bệnh tham khảo ý kiến bác sĩ trước khi dùng. Không dùng trong thời gian dài. Không dùng cho người tì vị hư yếu, đi đại tiện lỏng, ăn uống chậm tiêu.', '1714/2022/ĐKSP'),
 (5, 'Viên uống Ericllux Ocavill hỗ trợ tăng tiết dịch khớp, giúp khớp vận động linh hoạt (60 viên)', 650000, '5.jpg', 'Cơ xương khớp', 'Hộp 60 Viên', 'GRICAR', 'Ý', 'Glucosamin sulfat 2KCL, Methyl sulfonyl methan (MSM), Chondroitin sulfate, Nghệ, Bromelain 2500 GDU/g, Collagen thủy phân type 1, Calcium Carbonate, Vitamin D3, Vitamin K2 MK7, Kẽm (kẽm oxit), Vitamin B1', 'Ericllux hỗ trợ tăng tiết dịch khớp, giúp khớp vận động linh hoạt, giúp giảm các triệu chứng đau khớp, khô khớp do viêm khớp, thoái hóa khớp. Hỗ trợ giảm nguy cơ viêm khớp, thoái hóa khớp.', 'Ericllux thích hợp dùng cho người trưởng thành bị thoái hóa khớp, viêm khớp, khô khớp.', 'Uống 2 viên/ngày sau ăn.', '24 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ không quá 30 độ C, tránh ánh sáng. Để xa tầm tay trẻ em.', 'Chưa có thông tin về tác dụng phụ của sản phẩm.', '6002/2022/ĐKSP'),
 (6, 'Viên uống Calci Nano Hải Thượng Vương bổ sung Calci, vitamin D3 cho cơ thể (60 viên)', 347000, '6.jpg', 'Cơ xương khớp', 'Hộp 60 Viên', 'CÔNG TY DƯỢC PHẨM VÀ THƯƠNG MẠI THÀNH CÔNG - TNHH', '\r\nViệt Nam', 'Calci carbonate nano, Aquamin F, Calci gluconat, Menaquinone MK7, Magie, Kẽm Gluconat, Vitamin D3, Đường Fructose - Oligosaccharide', 'Calci Nano Hải Thượng Vương bổ sung canxi, vitamin D3 cho cơ thể, giúp xương răng chắc khỏe, hỗ trợ cho trẻ em trong giai đoạn phát triển, giảm nguy cơ còi xương ở trẻ và loãng xương ở người lớn.', 'Calci nano Hải Thượng Vương dùng trong các trường hợp sau: Người lớn và trẻ em cần bổ sung canxi và vitamin D. Người lớn bị loãng xương, trẻ em bị còi xương, chậm mọc răng do thiếu vitamin D và canxi.', 'Người lớn và trẻ em trên 6 tuổi: Ngày uống 02 viên/lần. Nên uống vào buổi sáng hoặc buổi trưa và uống với nhiều nước để đạt được hiệu quả.', '3 năm kể từ ngày sản', 'Bảo quản nơi khô ráo, thoáng mát, tránh ánh sáng trực tiếp. Đậy nắp kỹ sau khi sử dụng. Để xa tầm tay trẻ em.', 'Không sử dụng cho người mẫn cảm với bất cứ thành phần nào của sản phẩm. Không dùng quá liều khuyến cáo. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh.', '11156/2021/ĐKSP'),
@@ -266,9 +269,9 @@ INSERT INTO `san_pham` (`id`, `ten_san_pham`, `gia`, `img`, `danh_muc`, `quy_cac
 (37, 'Viên uống Pikolin Ocavill hỗ trợ tăng tuần hoàn máu não, giảm hình thành cục máu đông (2 vỉ x 15 viên)', 615000, '37.jpg', 'Tuần hoàn máu', 'Hộp 2 Vỉ x 15 Viên', 'PHYTOPHARMA LTD', 'Bulgaria', 'Acid folic, Vitamin B6, Vitamin B1, Coenzyme Q10, Dầu gan cá tuyết, Melatonin, Citicoline, Nattokinase, Bạch quả', 'Pikolin Ocavill hỗ trợ tăng tuần hoàn máu não. Hỗ trợ cải thiện các triệu chứng do thiểu năng tuần hoàn não. Hỗ trợ giảm nguy cơ hình thành cục máu đông và giảm di chứng sau tai biến mạch máu não do tắc mạch.', 'Pikolin Ocavill thích hợp sử dụng trong các trường hợp sau: Người thiếu năng tuần hoàn não. Người có nguy cơ hình thành cục máu đông. Người sau tai biến mạch máu não do tắc mạch.', 'Uống 1 viên/ngày vào buổi tối, sau bữa ăn.', '24 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ không quá 30 độ C, tránh ánh sáng. Để xa tầm tay trẻ em.', 'Không dùng Pikolin trong các trường hợp sau: Người đang xuất huyết hoặc người chuẩn bị phẫu thuật. Trẻ em dưới 12 tuổi. Người đang mang thai, có kế hoạch mang thai hoặc đang cho con bú. Người mẫn cảm với bất cứ thành phần nào của sản phẩm. Nếu bạn đang dùng thuốc chống đông máu hoặc thuốc chống kết tập tiểu cầu, hãy hỏi ý kiến bác sĩ trước khi dùng sản phẩm. Không dùng quá liều khuyến cáo. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '9657/2021/ĐKSP'),
 (38, 'Viên uống Natto Gold 3000FU Royal Care hỗ trợ hoạt huyết, tăng cường tuần hoàn não (60 viên)', 295000, '38.jpg', 'Thần kinh não', 'Hộp 60 Viên', 'HD PHARMA', 'Việt Nam', 'Coenzyme Q10, Acid folic, Vitamin B1, Kẽm Gluconat, Rutin, DHA 10%, Sữa ong chúa, Sắt fumarate, Đinh lăng, Rau đắng biển, Magnesi oxyd, Men gạo đỏ, Cao giảo cổ lam, Bạch quả, Nattokinase', 'Natto Gold 3000FU hỗ trợ hoạt huyết, tăng cường tuần hoàn não, giúp bền thành mạch, giúp giảm nguy cơ hình thành và hỗ trợ làm tan cục máu đông. Hỗ trợ giảm các triệu chứng: Đau đầu, mất ngủ, hoa mắt, chóng mặt, ù tai, suy giảm trí nhớ do thiểu năng tuần hoàn não. Hỗ trợ quá trình phục hồi sau tai biến mạch máu não do tắc mạch.', 'Natto Gold 3000FU thích hợp dùng cho các trường hợp sau: Người bị đau đầu, mất ngủ, hoa mắt, chóng mặt, ù tai, suy giảm trí nhớ do thiểu năng tuần hoàn não. Người sau tai biến mạch máu não do tắc mạch.', 'Uống 2 viên/ngày, ngày 1 lần.', '36 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ không quá 30 độ C, tránh ánh sáng. Để xa tầm tay trẻ em.', 'Không sử dụng cho: Người mẫn cảm với bất cứ thành phần nào của sản phẩm. Người huyết áp cao kịch phát. Người đang xuất huyết. Phụ nữ mang thai, phụ nữ sau sinh, rong kinh, rong huyết. Người chuẩn bị phẫu thuật. Người có hội chứng máu chậm đông. Trẻ dưới 18 tuổi. Không dùng quá liều khuyến cáo. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '7056/2022/ĐKSP'),
 (39, 'Viên uống Omexxel Ginkgo 120 OMEXXEL hỗ trợ tăng cường tuần hoàn máu não, tốt cho tim mạch (60 viên)', 688000, '39.jpg', 'Thần kinh não', 'Hộp 60 Viên', 'SABINSA CORPORATION', 'Hoa Kỳ', 'Dầu cá, Chiết xuất lá Bạch quả', 'Omexxel Ginkgo 120 hỗ trợ tăng cường tuần hoàn máu não, tốt cho tim mạch.', 'Omexxel Ginkgo 120 thích hợp sử dụng cho người trưởng thành.', 'Người lớn: Uống 1 viên nang mềm, một hoặc hai lần một ngày với nước sau bữa ăn.', '48 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, nhiệt độ không quá 30⁰C, tránh ánh sáng. Để xa tầm tay trẻ em.', 'Không dùng trong các trường hợp: Trẻ em dưới 18 tuổi. Phụ nữ có thai, cho con bú. Phụ nữ bị rong kinh, băng huyết. Người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Đối với bất kỳ chất bổ sung nào, hãy liên hệ với bác sĩ của bạn nếu bạn hiện đang dùng thuốc theo toa, hoặc đang mang thai hoặc cho con bú. Không sử dụng nếu con dấu an toàn bị hỏng hoặc bị mất. Người đang điều trị bằng thuốc kê đơn nên hỏi ý kiến bác sĩ trước khi sử dụng sản phẩm này. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '3737/2022/ĐKSP'),
-(40, 'Viên uống Gaba Jpanwell giảm các triệu chứng mất ngủ, khó ngủ, giấc ngủ không sâu (60 viên)', 960000, '40.jpg', 'Hỗ trợ giấc ngủ ngon', 'Hộp 60 Viên', 'GENSEI CO.,LTD', 'Nhật Bản', 'Nữ lang, Chiết xuất hoa nghệ tây, Vintamin B6, Vitamin B1, Vitamin B12, Chiết xuất lá dâu tằm, Tâm sen, L-Tryptophan, Glycinebetaine, L-theanine, GABA', 'Viên uống Gaba hỗ trợ làm giảm các triệu chứng mất ngủ, khó ngủ, giấc ngủ không sâu. Giúp giảm cảm giác lo lắng, bồn chồn và an thần.', 'Viên uống Gaba dùng trong các trường hợp: Người muốn cải thiện giấc ngủ và có giấc ngủ sâu. Người bị bệnh mất ngủ, người hay lo lắng, bất an.', 'Uống 2 viên/ngày. Uống trước khi ngủ 2 tiếng. Dùng với nước nguội hoặc nước ấm.', '36 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ dưới 30 độ C. Để xa tầm tay trẻ em.', 'Không sử dụng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '6403/2021/ÐKSP');
+(40, 'Viên uống Gaba Jpanwell giảm các triệu chứng mất ngủ, khó ngủ, giấc ngủ không sâu (60 viên)', 960000, '40.jpg', 'Hỗ trợ giấc ngủ ngon', 'Hộp 60 Viên', 'GENSEI CO.,LTD', 'Nhật Bản', 'Nữ lang, Chiết xuất hoa nghệ tây, Vintamin B6, Vitamin B1, Vitamin B12, Chiết xuất lá dâu tằm, Tâm sen, L-Tryptophan, Glycinebetaine, L-theanine, GABA', 'Viên uống Gaba hỗ trợ làm giảm các triệu chứng mất ngủ, khó ngủ, giấc ngủ không sâu. Giúp giảm cảm giác lo lắng, bồn chồn và an thần.', 'Viên uống Gaba dùng trong các trường hợp: Người muốn cải thiện giấc ngủ và có giấc ngủ sâu. Người bị bệnh mất ngủ, người hay lo lắng, bất an.', 'Uống 2 viên/ngày. Uống trước khi ngủ 2 tiếng. Dùng với nước nguội hoặc nước ấm.', '36 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ dưới 30 độ C. Để xa tầm tay trẻ em.', 'Không sử dụng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '6403/2021/ÐKSP'),
+(41, 'Viên uống Hato Gold Jpanwell cải thiện tim mạch, giảm khó thở, mệt mỏi, đau tức ngực (60 viên)', 995000, '41.jpg', 'Sức khoẻ tim mạch', 'Hộp 60 Viên', 'GENSEI CO.,LTD', 'Nhật Bản', 'Nho, Bạch quả, Chiết xuất Maca, Vừng đen, Nattokinase, Vitamin B12, Vitamin B6, Vitamin B2, Vitamin B1, Eicosapentaenoic acid, nhân sâm Hàn Quốc, Magie, DHA, Coenzyme Q10', 'Hato Gold hỗ trợ giúp trái tim khỏe mạnh. Giúp làm giảm khó thở, mệt mỏi, đau tức ngực. Giúp lưu thông máu ra vào tim, giảm ứ huyết tại tim, tăng lượng máu tới mạch vành, phục hồi chức năng tim. Giúp ngăn ngừa biến chứng nhồi máu cơ tim, suy tim hay rối loạn nhịp tim.', 'Hato Gold dùng trong các trường hợp: Người bị đau tim, rối loạn nhịp tim, suy tim, bệnh mạch vành. Người cao tuổi để tăng cường sức khỏe tim mạch. Người hay bị khó thở, mệt mỏi, đau tức ngực và ho phù.', 'Uống 2 viên/ngày với nước nguội hoặc nước ấm.', '24 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ dưới 30 độ C. Để xa tầm tay trẻ em.', 'Không sử dụng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '6379/2021/ÐKSP');
 INSERT INTO `san_pham` (`id`, `ten_san_pham`, `gia`, `img`, `danh_muc`, `quy_cach`, `nha_san_xuat`, `nuoc_san_xuat`, `thanh_phan`, `cong_dung`, `doi_tuong_su_dung`, `cach_su_dung`, `thoi_han_su_dung`, `bao_quan`, `luu_y_khi_su_dung`, `so_dang_ky`) VALUES
-(41, 'Viên uống Hato Gold Jpanwell cải thiện tim mạch, giảm khó thở, mệt mỏi, đau tức ngực (60 viên)', 995000, '41.jpg', 'Sức khoẻ tim mạch', 'Hộp 60 Viên', 'GENSEI CO.,LTD', 'Nhật Bản', 'Nho, Bạch quả, Chiết xuất Maca, Vừng đen, Nattokinase, Vitamin B12, Vitamin B6, Vitamin B2, Vitamin B1, Eicosapentaenoic acid, nhân sâm Hàn Quốc, Magie, DHA, Coenzyme Q10', 'Hato Gold hỗ trợ giúp trái tim khỏe mạnh. Giúp làm giảm khó thở, mệt mỏi, đau tức ngực. Giúp lưu thông máu ra vào tim, giảm ứ huyết tại tim, tăng lượng máu tới mạch vành, phục hồi chức năng tim. Giúp ngăn ngừa biến chứng nhồi máu cơ tim, suy tim hay rối loạn nhịp tim.', 'Hato Gold dùng trong các trường hợp: Người bị đau tim, rối loạn nhịp tim, suy tim, bệnh mạch vành. Người cao tuổi để tăng cường sức khỏe tim mạch. Người hay bị khó thở, mệt mỏi, đau tức ngực và ho phù.', 'Uống 2 viên/ngày với nước nguội hoặc nước ấm.', '24 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ dưới 30 độ C. Để xa tầm tay trẻ em.', 'Không sử dụng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '6379/2021/ÐKSP'),
 (42, 'Viên uống Cholesterol Aid Vitamins For Life hỗ trợ giảm cholesterol (60 viên)', 390000, '42.jpg', 'Giảm Cholesterol', 'Chai 60 viên', 'VITAMINS FOR LIFE LABORATORIES', 'Hoa Kỳ', 'Chromium, Cao Trầm, Men gạo đỏ', 'Cholesterol Aid hỗ trợ giảm cholesterol.', 'Cholesterol Aid thích hợp dùng cho người mỡ máu có chỉ số cholesterol cao.', 'Người lớn: Uống 1 - 2 viên/ngày, cùng bữa ăn.', '24 tháng kể từ ngày ', 'Để nơi khô ráo, thoáng mát, xa tầm tay trẻ em. Đậy nắp kỹ sau khi sử dụng. Nên bảo quản trong ngăn mát tủ lạnh.', 'Phụ nữ mang thai, đang cho con bú hoặc đang dùng bất kỳ loại thuốc nào, nên tham khảo ý kiến của bác sĩ trước khi sử dụng. Không sử dụng cho người mẫn cảm với bất cứ thành phần nào của sản phẩm.  Ngưng sử dụng và hỏi ý kiến bác sĩ nếu có bất kỳ phản ứng phụ. Không sử dụng khi con tem dưới nắp bị mất hoặc rách. Không dùng quá liều khuyến cáo. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '7777/2020/ĐKSP'),
 (43, 'Viên uống Active Legs hỗ trợ điều trị suy giãn tĩnh mạch chân (15 viên)', 340000, '43.jpg', 'Sức khoẻ tim mạch', 'Hộp 15 Viên', 'LEGOSAN AB, THỤY ĐIỂN', 'Thụy Điển', 'Hạt tiêu đen, Chiết xuất nho, Chiết xuất vỏ thông Pháp, Tá dược vừa đủ, Vitamin C', 'Active Legs giúp tăng cường lưu thông tuần hoàn máu, tăng sức bền tĩnh mạch, hạn chế hình thành huyết khối, phòng ngừa và hỗ trợ điều trị suy giãn tĩnh mạch chân, giảm các triệu chứng đau chân, nặng chân, tê chân, gân xanh nổi ở chân…', 'Active Legs dùng trong các trường hợp: Người cao tuổi, thường xuyên phải ngồi nhiều, đứng nhiều, ít vận động. Người bị mắc giãn tĩnh mạch chân.', 'Uống 1 viên mỗi ngày.', '24 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ dưới 30 độ C, tránh ánh nắng trực tiếp từ mặt trời. Để xa tầm tay trẻ em.', 'Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kĩ hướng dẫn trước khi dùng.', '1888/2019/ÐKSP'),
 (44, 'Viên uống Lipitas Jpanwell giúp giảm mỡ, cholesterol và triglyceride trong máu (60 viên)', 995000, '44.jpg', 'Giảm Cholesterol', 'Hộp 60 Viên', 'JAPAN TABLET CORPRATION', 'Nhật Bản', 'Nattokinase, Inulin, Kế sữa, L-Cystine, Quercetin, Vitamin E, Selenium, Bột Gừng, Tá dược vừa đủ, Coenzym Q10, Monascus, Bột vỏ hành tây, Bột nấm ngưu chương chi', 'Viên uống Lipitas JpanWell giúp giảm mỡ, Cholesterol và Triglyceride trong máu, hỗ trợ giảm nguy cơ hình thành huyết khối, hỗ trợ giảm huyết áp do Cholesterol, tốt cho tim mạch.', 'Viên uống Lipitas JpanWell dùng trong các trường hợp: Người có mỡ máu và triglyceride trong máu cao. Người có nguy cơ tai biến mạch máu não do huyết khối, huyết áp, xơ vữa động mạch.', 'Uống 2 viên/ngày với nước nguội hoặc nước ấm.', '36 tháng kể từ ngày ', 'Bảo quản nơi khô ráo, thoáng mát, nhiệt độ không quá 30oC, tránh ánh sáng trực tiếp. Để xa tầm tay trẻ em.', 'Không dùng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Sản phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. Đọc kỹ hướng dẫn sử dụng trước khi dùng.', '10274/2019/ÐKSP'),
@@ -301,7 +304,8 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `name`, `username`, `sdt`, `address`, `password`, `role`) VALUES
 (16, 'Vũ Thành Luân', 'vuliz943@gmail.com', '0977472201', 'Thường Tín , Hà Nội', '123456', 0),
-(22, 'Vũ Thành Luân', 'vuliz@gmail.com', '0977472201', '09', '123456', 1);
+(22, 'Vũ Thành Luân', 'vuliz@gmail.com', '0977472201', '09', '123456', 1),
+(23, 'Hoàng', 'hoang@gmail.com', '0123456789', 'Thái Bình', '123456', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -317,6 +321,7 @@ ALTER TABLE `feedback`
 -- Chỉ mục cho bảng `muc`
 --
 ALTER TABLE `muc`
+  ADD PRIMARY KEY (`stt`),
   ADD KEY `id` (`id`);
 
 --
@@ -367,6 +372,12 @@ ALTER TABLE `feedback`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT cho bảng `muc`
+--
+ALTER TABLE `muc`
+  MODIFY `stt` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
 -- AUTO_INCREMENT cho bảng `muclon`
 --
 ALTER TABLE `muclon`
@@ -376,25 +387,25 @@ ALTER TABLE `muclon`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
