@@ -2,7 +2,7 @@
     include_once "login.php";
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,7 +47,7 @@
                     <p class="text-center h1 fw-bold mb-4 mt-3">Đăng nhập</p>
                     
                     <div class="form-outline mb-4">
-                      <label class="form-label"> <i class="bi bi-person-circle"></i> Tài khoản</label>
+                      <label class="form-label"> <i class="bi bi-person-circle"></i> Email</label>
                       <input type="email" class="form-control form-control-lg py-3" name="username" autocomplete="off" placeholder="Nhập email" style="border-radius:25px ;" >
 
                     </div>
@@ -65,6 +65,7 @@
                     </div>
 
                   </form><br>
+                  <p align="center"><a href="forgot.php" class="text-primary" style="font-weight:600; text-decoration:none;">Quên mật khẩu</a></p>
                   <p align="center">Bạn chưa có tài khoản? <a href="register.php" class="text-primary" style="font-weight:600;text-decoration:none;">Đăng ký ngay</a></p>
                 </div>
               </div>
