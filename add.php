@@ -4,7 +4,7 @@
     if(isset($_POST['register']))
     {
         if ($_POST['password'] == $_POST['repassword']){
-            if (!checkphoneexist($_POST['sdt'],$conn)){
+            if (!checkuserexist($_POST['sdt'],$_POST['username'],$conn)){
                 $name=$_POST['name'];
                 $username=$_POST['username'];
                 $pass=$_POST['password'];
@@ -24,8 +24,8 @@
         }  
     }
 
-    function checkphoneexist($sdt,$conn){
-        $sql = "SELECT * FROM tbl_user WHERE sdt = '$sdt'";
+    function checkuserexist($sdt,$username,$conn){
+        $sql = "SELECT * FROM tbl_user WHERE sdt = '$sdt' or username = '$username'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             return true;
