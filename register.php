@@ -35,9 +35,9 @@
                           </div>
                         <?php
                       }
-                      else if (checkphoneexist($_POST['sdt'],$conn)){ ?>
+                      else if (checkuserexist($_POST['sdt'],$_POST['username'],$conn)){ ?>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                              <strong> Số điện thoại đã được đăng ký </strong>
+                              <strong> Tài khoản đã tồn tại </strong>
                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                           </div>
                       <?php  }
