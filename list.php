@@ -1,5 +1,5 @@
 <?php
-    require_once 'component\database.php';
+    require_once 'component/database.php';
     require_once 'filter.php';
     require_once 'buy.php';
     $_SESSION['sql'] = 'SELECT * FROM san_pham';

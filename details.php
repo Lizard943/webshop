@@ -1,5 +1,5 @@
 <?php
-    require_once 'component\database.php';
+    require_once 'component/database.php';
     session_start();
     if (isset($_POST['mua']) && isset($_SESSION['name'])) {
         if (isset($_SESSION['cart'])) {
@@ -97,8 +97,8 @@
                                     <h3><?=$row['ten_san_pham']?></h3>
                                     <input type="hidden" name="name" value="<?= $row['ten_san_pham'] ?>">
                                     <div class="row justify-content-start">
-                                        <h1 class="col-3 " style="color:blue"><?= number_format(tinhgia($row['id'],$row["gia"],$conn)) ?>đ</h1>
-                                        <h3 class="col-3 ms-2 mt-2" style="color:gray"><s><?= number_format($row["gia"]) ?>đ</s></h3>
+                                        <h1 class="col-3 " style="color:blue"><?= number_format(tinhgia($row['id'],$row["gia"],$conn),0,'','.') ?>đ</h1>
+                                        <h3 class="col-3 ms-2 mt-2" style="color:gray"><s><?= number_format($row["gia"],0,'','.') ?>đ</s></h3>
                                     </div>
                                     
                                     <input type="hidden" name="gia" value="<?= tinhgia($row['id'],$row["gia"],$conn) ?>">

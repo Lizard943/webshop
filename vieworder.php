@@ -1,5 +1,5 @@
 <?php
-    require_once 'component\database.php';
+    require_once 'component/database.php';
     session_start();
     require_once 'auth.php';
     if(isset($_GET['ma'])){

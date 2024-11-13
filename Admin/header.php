@@ -1,5 +1,5 @@
 <?php
-    require_once '..\component\database.php';
+    require_once '../component/database.php';
     session_start();
 ?>
 <!DOCTYPE html>
