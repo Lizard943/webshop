@@ -1,5 +1,5 @@
 <?php
-    require_once 'component\database.php';
+    require_once 'component/database.php';
     session_start();
     $_SESSION['sum'] = 0;
     if(isset($_POST['xoa'])) {
@@ -110,7 +110,7 @@
                                                         <input type="number" min=1 name="<?=$item['id']?>" style="width: 50px;" value="<?=$item['sl']?>">
                                                     </div> 
                                                     <div class="col col-md-2 pt-2">
-                                                        <h6 class="ps-4"><?=number_format($item['sl']*$item['gia'])?>đ</h6>
+                                                        <h6 class="ps-4"><?=number_format($item['sl']*$item['gia'],0,'','.')?>đ</h6>
                                                     </div>
                                                     <div class="col col-md-1">
                                                         <button type="submit" name="xoa" value="<?=$item['id']?>" class="btn btn-primary">Xoá</button>
@@ -137,7 +137,7 @@
                                         <p>Tổng giá sản phẩm:</p>
                                     </div>
                                     <div class="col-4">
-                                        <p><?=number_format($sum)?>đ</p>
+                                        <p><?=number_format($sum,0,'','.')?>đ</p>
                                     </div>
                                     
                                     <hr style="margin-left:12px;width:250px">
@@ -145,7 +145,7 @@
                                         <p>Tổng thanh toán:</p>
                                     </div>
                                     <div class="col-4">
-                                        <p><strong><?=number_format($sum)?>đ</strong></p>
+                                        <p><strong><?=number_format($sum,0,'','.')?>đ</strong></p>
                                     </div>
                                     <?php if (isset($_SESSION['name']) && !empty($_SESSION['cart'])) { ?>
                                         <a class="btn btn-primary" href="checkout.php">Xác nhận</a>
